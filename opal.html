@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal website portfolio profesional dengan desain modern dan responsif"
+    />
+    <title>Personal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              primary: "#4B5563",
+              secondary: "#6B7280",
+              accent: "#9CA3AF",
+              dark: "#1F2937",
+              light: "#F3F4F6",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        z-index: 50;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+      }
+      .blur-bg {
+        background: rgba(243, 244, 246, 0.8);
+        backdrop-filter: blur(10px);
+      }
+      .dark .blur-bg {
+        background: rgba(31, 41, 55, 0.8);
+      }
+      .section-bg {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      }
+      .dark .section-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans"
+  >
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navbar -->
+    <nav
+      class="fixed w-full blur-bg z-40 border-b border-gray-200 dark:border-gray-800"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="#" class="text-2xl font-bold gradient-text">JD</a>
+          <div class="flex items-center space-x-6">
+            <div class="hidden md:flex space-x-8">
+              <a
+                href="#home"
+                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+                >About</a
+              >
+              <a
+                href="#portfolio"
+                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+                >Portfolio</a
+              >
+              <a
+                href="#contact"
+                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
+                >Contact</a
+              >
+            </div>
+            <button
+              id="darkModeToggle"
+              class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+            >
+              <svg
+                class="w-5 h-5 dark:hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 hidden dark:block"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen pt-24 flex items-center relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-gray-100 via-white to-gray-200 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800"
+      >
+        <div
+          class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjAyIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzk0LTQtNHMtNC0xLjc5LTQgNCAxLjc5IDQgNCA0LTEuNzk0eiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"
+        ></div>
+      </div>
+      <div class="container mx-auto px-6 py-16 relative">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8 relative z-10">
+            <div class="space-y-4">
+              <div
+                class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium mb-4"
+              >
+                👋 Welcome to my portfolio
+              </div>
+              <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                Hi, I'm <span class="gradient-text">Naufal Ramdani</span>
+              </h1>
+              <p class="text-2xl text-gray-600 dark:text-gray-400">
+                Full Stack Developer & UI/UX Designer
+              </p>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400 text-lg max-w-xl">
+              Creating beautiful and functional digital experiences that make a
+              difference. Let's build something amazing together.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="group px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+              >
+                Contact Me
+                <svg
+                  class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#portfolio"
+                class="group px-8 py-4 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all flex items-center gap-2"
+              >
+                View Portfolio
+                <svg
+                  class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div class="flex items-center gap-8 pt-8">
+              <div class="flex -space-x-4">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop"
+                  alt="Client"
+                  class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop"
+                  alt="Client"
+                  class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop"
+                  alt="Client"
+                  class="w-10 h-10 rounded-full border-2 border-white dark:border-gray-800"
+                />
+              </div>
+              <div>
+                <p class="text-sm font-medium">Trusted by 100+ clients</p>
+                <div class="flex items-center gap-1">
+                  <svg
+                    class="w-4 h-4 text-yellow-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                    />
+                  </svg>
+                  <span class="text-sm font-medium">4.9/5 Rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div
+              class="w-80 h-80 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-2xl relative z-10"
+            >
+              <img
+                src="https://scontent-cgk2-1.xx.fbcdn.net/v/t1.6435-9/102412570_979974079103828_3763948457329426432_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=I-Wm2VvlYWUQ7kNvwEnX1RW&_nc_oc=Adn2xAkMg7YS6oSFy1cqnP8AyaudtoFFwMII7dJtsdh_12TQMHMCcgE9_eBJreB7KC8&_nc_zt=23&_nc_ht=scontent-cgk2-1.xx&_nc_gid=4e8Gfc_xg6OIWiR8ZAhImA&oh=00_AfM50txo63h0quyw1vRFhUCKgYSf8LQyCBCk2o4-nTHKtw&oe=68752FF8"
+                alt="Profile"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary rounded-full opacity-20 blur-2xl animate-pulse"
+            ></div>
+            <div
+              class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full opacity-20 blur-2xl animate-pulse"
+            ></div>
+            <div
+              class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"
+                >
+                  <svg
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium">Fast Delivery</p>
+                  <p class="text-xs text-gray-500">24/7 Support</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-1/4 -left-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
+            >
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center"
+                >
+                  <svg
+                    class="w-6 h-6 text-secondary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium">Quality Work</p>
+                  <p class="text-xs text-gray-500">100% Satisfaction</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+            About Me
+          </h2>
+          <div class="grid md:grid-cols-2 gap-16">
+            <div class="space-y-8">
+              <p
+                class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                Saya adalah seorang Full Stack Developer yang bersemangat dalam
+                menciptakan solusi digital yang inovatif. Dengan pengalaman
+                lebih dari 5 tahun di industri teknologi, saya fokus pada
+                pengembangan aplikasi web yang user-friendly dan scalable. Saya
+                percaya bahwa teknologi yang baik harus mudah digunakan dan
+                memberikan nilai tambah bagi penggunanya.
+              </p>
+              <div class="space-y-6">
+                <h3 class="text-2xl font-semibold">Skills</h3>
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >Python</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >Django</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >MongoDB</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >React</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >AWS</span
+                  >
+                </div>
+              </div>
+              <a
+                href="#"
+                class="inline-block px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl"
+                >Download CV</a
+              >
+            </div>
+            <div class="space-y-8">
+              <h3 class="text-2xl font-semibold">Experience</h3>
+              <div class="space-y-6">
+                <div
+                  class="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all card-hover"
+                >
+                  <h4 class="text-xl font-semibold mb-2">Senior Developer</h4>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Tech Solutions Indonesia • 2021 - Present
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-400 mt-2">
+                    Memimpin tim pengembangan dalam proyek-proyek enterprise,
+                    mengimplementasikan best practices, dan mengoptimalkan
+                    performa aplikasi.
+                  </p>
+                </div>
+                <div
+                  class="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all card-hover"
+                >
+                  <h4 class="text-xl font-semibold mb-2">
+                    Full Stack Developer
+                  </h4>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Digital Innovation Lab • 2019 - 2021
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-400 mt-2">
+                    Mengembangkan aplikasi web progresif dan solusi digital
+                    untuk startup, fokus pada user experience dan skalabilitas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-gray-100 dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+          Portfolio
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Portfolio Item 1 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+                alt="Project 1"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
+              >
+                <a href="#" class="text-white font-medium">View Project →</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Platform e-commerce modern dengan fitur real-time inventory,
+                payment gateway integration, dan analytics dashboard. Dibangun
+                menggunakan Django dan React.
+              </p>
+            </div>
+          </div>
+          <!-- Portfolio Item 2 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
+                alt="Project 2"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
+              >
+                <a href="#" class="text-white font-medium">View Project →</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Aplikasi manajemen tugas kolaboratif dengan fitur real-time
+                updates, file sharing, dan progress tracking. Menggunakan
+                Node.js dan MongoDB.
+              </p>
+            </div>
+          </div>
+          <!-- Portfolio Item 3 -->
+          <div
+            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop"
+                alt="Project 3"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
+              >
+                <a href="#" class="text-white font-medium">View Project →</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">AI-Powered Analytics</h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Sistem analitik berbasis AI untuk prediksi tren bisnis dan
+                optimasi performa. Mengintegrasikan machine learning dengan
+                Python dan TensorFlow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+            Contact Me
+          </h2>
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-2"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl"
+            >
+              Send Message
+            </button>
+          </form>
+          <div class="flex justify-center space-x-8 mt-12">
+            <a
+              href="#"
+              class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+      <div class="container mx-auto px-6 text-center">
+        <p>&copy; 2024 Naufal Ramdani. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      darkModeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      // Set default dark mode
+      document.documentElement.classList.add("dark");
+
+      // Scroll Progress Bar
+      window.addEventListener("scroll", () => {
+        const scrollProgress = document.getElementById("scrollProgress");
+        const scrollable =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / scrollable) * 100;
+        scrollProgress.style.width = progress + "%";
+      });
+    </script>
+  </body>
+</html>
