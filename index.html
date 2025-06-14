@@ -402,21 +402,21 @@
           <div class="space-y-8 relative z-10 hero-content">
             <div class="space-y-4">
               <div
-                class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium mb-4"
+                class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium mb-4 welcome-text"
               >
                 👋 Welcome to my digital space
               </div>
-              <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+              <h1 class="text-5xl md:text-7xl font-bold leading-tight hero-name">
                 Hi, I'm <span class="gradient-text">Danadipa Nugraha</span>
               </h1>
-              <p class="text-2xl text-gray-600 dark:text-gray-400">
+              <p class="text-2xl text-gray-600 dark:text-gray-400 hero-role">
                 Full Stack Developer & UI/UX Designer
               </p>
             </div>
-            <p class="text-gray-600 dark:text-gray-400 text-lg max-w-xl">
+            <p class="text-gray-600 dark:text-gray-400 text-lg max-w-xl hero-description">
               Crafting innovative digital solutions that combine elegant design with powerful functionality. Specializing in building scalable web applications and creating intuitive user experiences that drive business growth.
             </p>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 hero-buttons">
               <a
                 href="#contact"
                 class="group px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
@@ -460,13 +460,13 @@
           <div class="relative hero-image">
             <div class="w-80 h-80 mx-auto relative z-10">
               <!-- Dekoratif Element -->
-              <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl transform rotate-3"></div>
-              <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-2xl transform -rotate-3"></div>
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl transform rotate-3 decorative-element"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-2xl transform -rotate-3 decorative-element"></div>
               
               <!-- Main Content -->
               <div class="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
                 <div class="space-y-6">
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 feature-card">
                     <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                       <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -478,7 +478,7 @@
                     </div>
                   </div>
                   
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 feature-card">
                     <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
                       <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -490,7 +490,7 @@
                     </div>
                   </div>
                   
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 feature-card">
                     <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
                       <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
@@ -506,8 +506,8 @@
             </div>
             
             <!-- Floating Elements -->
-            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl animate-pulse"></div>
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/5 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl animate-pulse floating-element"></div>
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/5 rounded-full blur-2xl animate-pulse floating-element"></div>
           </div>
         </div>
       </div>
@@ -1153,19 +1153,80 @@
       gsap.registerPlugin(ScrollTrigger);
 
       // Hero Section Animations
-      gsap.from(".hero-content", {
-        duration: 1,
-        y: 50,
+      const heroTimeline = gsap.timeline();
+
+      // Animate welcome text
+      heroTimeline.from(".welcome-text", {
+        duration: 0.8,
+        y: 30,
         opacity: 0,
         ease: "power3.out"
+      })
+      // Animate name
+      .from(".hero-name", {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        ease: "power3.out"
+      }, "-=0.4")
+      // Animate role
+      .from(".hero-role", {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        ease: "power3.out"
+      }, "-=0.4")
+      // Animate description
+      .from(".hero-description", {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        ease: "power3.out"
+      }, "-=0.4")
+      // Animate buttons
+      .from(".hero-buttons", {
+        duration: 0.8,
+        y: 30,
+        opacity: 0,
+        ease: "power3.out"
+      }, "-=0.4");
+
+      // Animate hero image with floating effect
+      gsap.to(".hero-image", {
+        duration: 2,
+        y: 20,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
       });
 
-      gsap.from(".hero-image", {
-        duration: 1,
-        x: 50,
+      // Animate decorative elements
+      gsap.from(".decorative-element", {
+        duration: 1.5,
+        scale: 0,
         opacity: 0,
-        ease: "power3.out",
-        delay: 0.3
+        ease: "back.out(1.7)",
+        stagger: 0.2
+      });
+
+      // Animate floating elements
+      gsap.to(".floating-element", {
+        duration: 3,
+        y: 30,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        stagger: 0.2
+      });
+
+      // Animate feature cards
+      gsap.from(".feature-card", {
+        duration: 0.8,
+        scale: 0.8,
+        opacity: 0,
+        ease: "back.out(1.7)",
+        stagger: 0.2,
+        delay: 1
       });
 
       // About Section Animations
