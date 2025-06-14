@@ -37,8 +37,8 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -90,47 +90,6 @@
       }
       .dark .section-bg {
         background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-      }
-
-      /* Custom Cursor Styles */
-      .custom-cursor {
-        width: 20px;
-        height: 20px;
-        background: rgba(75, 85, 99, 0.5);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.2s ease;
-        mix-blend-mode: difference;
-      }
-
-      .custom-cursor-follower {
-        width: 40px;
-        height: 40px;
-        background: rgba(75, 85, 99, 0.2);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9998;
-        transition: transform 0.4s ease;
-        mix-blend-mode: difference;
-      }
-
-      /* Interactive Elements */
-      .interactive-element {
-        position: relative;
-        cursor: none;
-      }
-
-      .interactive-element:hover ~ .custom-cursor {
-        transform: scale(1.5);
-        background: rgba(75, 85, 99, 0.8);
-      }
-
-      .interactive-element:hover ~ .custom-cursor-follower {
-        transform: scale(1.2);
-        background: rgba(75, 85, 99, 0.4);
       }
 
       /* Button Hover Effects */
@@ -200,11 +159,10 @@
         overflow-y: auto;
         opacity: 0;
         transition: opacity 0.3s ease;
-        -webkit-overflow-scrolling: touch; /* Untuk smooth scroll di iOS */
       }
 
       .portfolio-modal.active {
-        display: flex;
+        display: block;
         opacity: 1;
       }
 
@@ -217,8 +175,6 @@
         position: relative;
         transform: translateY(-20px);
         transition: transform 0.3s ease;
-        max-height: 90vh;
-        overflow-y: auto;
         padding: 1.5rem;
       }
 
@@ -227,7 +183,6 @@
           width: 100%;
           margin: 0;
           border-radius: 0;
-          max-height: 100vh;
           padding: 1rem;
         }
 
@@ -283,8 +238,6 @@
       /* Prevent body scroll when modal is open */
       body.modal-open {
         overflow: hidden;
-        position: fixed;
-        width: 100%;
       }
 
       .portfolio-grid {
@@ -332,15 +285,36 @@
       .gallery-image:hover {
         transform: scale(1.05);
       }
+
+      /* Animation Classes */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .fade-in {
+        opacity: 0;
+      }
+
+      .scale-up {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+      }
     </style>
   </head>
   <body
     class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans"
   >
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
-    <div class="custom-cursor-follower"></div>
-
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -425,7 +399,7 @@
       </div>
       <div class="container mx-auto px-6 py-16 relative">
         <div class="grid md:grid-cols-2 gap-16 items-center">
-          <div class="space-y-8 relative z-10" data-aos="fade-right" data-aos-duration="1000">
+          <div class="space-y-8 relative z-10 hero-content">
             <div class="space-y-4">
               <div
                 class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium mb-4"
@@ -483,7 +457,7 @@
               </a>
             </div>
           </div>
-          <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+          <div class="relative hero-image">
             <div class="w-80 h-80 mx-auto relative z-10">
               <!-- Dekoratif Element -->
               <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl transform rotate-3"></div>
@@ -547,7 +521,7 @@
             About Me
           </h2>
           <div class="grid md:grid-cols-2 gap-16">
-            <div class="space-y-8" data-aos="fade-right" data-aos-delay="200">
+            <div class="space-y-8 about-content">
               <p
                 class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
               >
@@ -588,7 +562,7 @@
                 >Download Resume</a
               >
             </div>
-            <div class="space-y-8" data-aos="fade-left" data-aos-delay="400">
+            <div class="space-y-8 about-content">
               <h3 class="text-2xl font-semibold">Professional Journey</h3>
               <div class="space-y-6">
                 <div
@@ -631,9 +605,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Service Item 1 -->
           <div
-            class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover text-center"
-            data-aos="zoom-in"
-            data-aos-delay="200"
+            class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover text-center service-card"
           >
             <div
               class="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center"
@@ -659,9 +631,7 @@
           </div>
           <!-- Service Item 2 -->
           <div
-            class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover text-center"
-            data-aos="zoom-in"
-            data-aos-delay="400"
+            class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover text-center service-card"
           >
             <div
               class="w-16 h-16 mx-auto mb-6 bg-secondary/10 rounded-full flex items-center justify-center"
@@ -705,9 +675,7 @@
           </div>
           <!-- Service Item 3 -->
           <div
-            class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover text-center"
-            data-aos="zoom-in"
-            data-aos-delay="600"
+            class="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover text-center service-card"
           >
             <div
               class="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center"
@@ -744,9 +712,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Portfolio Item 1 -->
           <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
-            data-aos="flip-left"
-            data-aos-delay="200"
+            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover portfolio-card"
           >
             <div class="relative">
               <img
@@ -778,9 +744,7 @@
 
           <!-- Portfolio Item 2 -->
           <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
-            data-aos="flip-left"
-            data-aos-delay="400"
+            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover portfolio-card"
           >
             <div class="relative">
               <img
@@ -812,9 +776,7 @@
 
           <!-- Portfolio Item 3 -->
           <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
-            data-aos="flip-left"
-            data-aos-delay="600"
+            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover portfolio-card"
           >
             <div class="relative">
               <img
@@ -1004,7 +966,7 @@
           <p class="text-lg text-gray-600 dark:text-gray-400 mb-12">
             Interested in working together? I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's create something amazing together!
           </p>
-          <form class="space-y-6 text-left" data-aos="fade-up" data-aos-delay="400">
+          <form class="space-y-6 text-left contact-form">
             <div>
               <label
                 for="name"
@@ -1141,42 +1103,6 @@
         scrollProgress.style.width = progress + "%";
       });
 
-      // Initialize AOS
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-      });
-
-      // Custom Cursor
-      const cursor = document.querySelector('.custom-cursor');
-      const cursorFollower = document.querySelector('.custom-cursor-follower');
-      const interactiveElements = document.querySelectorAll('a, button, .card-hover, input, textarea');
-
-      document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        
-        setTimeout(() => {
-          cursorFollower.style.left = e.clientX + 'px';
-          cursorFollower.style.top = e.clientY + 'px';
-        }, 100);
-      });
-
-      interactiveElements.forEach(element => {
-        element.classList.add('interactive-element');
-        
-        element.addEventListener('mouseenter', () => {
-          cursor.style.transform = 'scale(1.5)';
-          cursorFollower.style.transform = 'scale(1.2)';
-        });
-        
-        element.addEventListener('mouseleave', () => {
-          cursor.style.transform = 'scale(1)';
-          cursorFollower.style.transform = 'scale(1)';
-        });
-      });
-
       // Add hover effects to buttons
       document.querySelectorAll('button, a[href^="#"]').forEach(button => {
         button.classList.add('btn-hover-effect');
@@ -1197,25 +1123,12 @@
         const modal = document.getElementById(projectId);
         modal.classList.add('active');
         document.body.classList.add('modal-open');
-        
-        // Prevent background scroll
-        const scrollY = window.scrollY;
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.width = '100%';
       }
 
       function closeModal(projectId) {
         const modal = document.getElementById(projectId);
         modal.classList.remove('active');
         document.body.classList.remove('modal-open');
-        
-        // Restore scroll position
-        const scrollY = document.body.style.top;
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
 
       // Close modal when clicking outside
@@ -1236,25 +1149,100 @@
         }
       });
 
-      // Handle mobile touch events
-      document.querySelectorAll('.portfolio-modal').forEach(modal => {
-        let touchStartY = 0;
-        let touchEndY = 0;
+      // GSAP Animations
+      gsap.registerPlugin(ScrollTrigger);
 
-        modal.addEventListener('touchstart', (e) => {
-          touchStartY = e.touches[0].clientY;
-        }, { passive: true });
+      // Hero Section Animations
+      gsap.from(".hero-content", {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        ease: "power3.out"
+      });
 
-        modal.addEventListener('touchmove', (e) => {
-          touchEndY = e.touches[0].clientY;
-          const modalContent = modal.querySelector('.modal-content');
-          const modalTop = modalContent.getBoundingClientRect().top;
-          
-          // Prevent pull-to-refresh when modal is at the top
-          if (modalTop <= 0 && touchEndY > touchStartY) {
-            e.preventDefault();
-          }
-        }, { passive: false });
+      gsap.from(".hero-image", {
+        duration: 1,
+        x: 50,
+        opacity: 0,
+        ease: "power3.out",
+        delay: 0.3
+      });
+
+      // About Section Animations
+      gsap.utils.toArray('.about-content').forEach((section, i) => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          },
+          duration: 1,
+          y: 50,
+          opacity: 0,
+          ease: "power3.out",
+          delay: i * 0.2
+        });
+      });
+
+      // Services Section Animations
+      gsap.utils.toArray('.service-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          duration: 0.8,
+          scale: 0.9,
+          opacity: 0,
+          ease: "back.out(1.7)",
+          delay: i * 0.1
+        });
+      });
+
+      // Portfolio Section Animations
+      gsap.utils.toArray('.portfolio-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          duration: 0.8,
+          y: 50,
+          opacity: 0,
+          ease: "power3.out",
+          delay: i * 0.1
+        });
+      });
+
+      // Contact Section Animations
+      gsap.from(".contact-form", {
+        scrollTrigger: {
+          trigger: ".contact-form",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        },
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        ease: "power3.out"
+      });
+
+      // Smooth Scroll Animation
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          gsap.to(window, {
+            duration: 1,
+            scrollTo: {
+              y: target,
+              offsetY: 70
+            },
+            ease: "power3.inOut"
+          });
+        });
       });
     </script>
   </body>
