@@ -5,33 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Danadipa Nugraha adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
+      content="Danadipa Nugraha adalah Full Stack Developer dan Mobile Developer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Flutter, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
     />
     <meta
       name="keywords"
-      content="Danadipa Nugraha, Full Stack Developer, UI/UX Designer, Python, Django, MongoDB, React, Node.js, AWS, web development, mobile development, portfolio, personal website"
+      content="Danadipa Nugraha, Full Stack Developer, Mobile Developer, Python, Django, MongoDB, React, Flutter, Node.js, AWS, web development, mobile development, portfolio, personal website"
     />
     <meta
       property="og:title"
-      content="Danadipa Nugraha | Full Stack Developer & UI/UX Designer"
+      content="Danadipa Nugraha | Full Stack Developer & Mobile Developer"
     />
     <meta
       property="og:description"
-      content="Danadipa Nugraha adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
+      content="Danadipa Nugraha adalah Full Stack Developer dan Mobile Developer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Flutter, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
     />
     <meta property="og:image" content="[URL_GAMBAR_PROFIL_ANDA]" />
     <meta property="og:url" content="[URL_WEBSITE_ANDA]" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Danadipa Nugraha | Full Stack Developer & UI/UX Designer"
+      content="Danadipa Nugraha | Full Stack Developer & Mobile Developer"
     />
     <meta
       name="twitter:description"
-      content="Danadipa Nugraha adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
+      content="Danadipa Nugraha adalah Full Stack Developer dan Mobile Developer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Flutter, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
     />
     <meta name="twitter:image" content="[URL_GAMBAR_PROFIL_ANDA]" />
-    <title>Danadipa Nugraha | Full Stack Developer & UI/UX Designer</title>
+    <title>Danadipa Nugraha | Full Stack Developer & Mobile Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
@@ -310,6 +310,120 @@
         opacity: 0;
         transform: translateX(50px);
       }
+
+      /* Navbar Styles */
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        color: #4B5563;
+      }
+
+      .dark .nav-link {
+        color: #E5E7EB;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .dark .nav-link::after {
+        background: linear-gradient(to right, #E5E7EB, #9CA3AF);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .dark .navbar-blur {
+        background: rgba(17, 24, 39, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .dark .logo-text {
+        background: linear-gradient(135deg, #E5E7EB 0%, #9CA3AF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .mobile-menu-button {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-button {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          transition: all 0.3s ease;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+
+        .dark .nav-links {
+          background: rgba(17, 24, 39, 0.95);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          color: #4B5563;
+        }
+
+        .dark .nav-links a {
+          color: #E5E7EB;
+        }
+      }
+
+      .scroll-down {
+        transform: translateY(-100%);
+      }
+
+      .scroll-up {
+        transform: translateY(0);
+      }
     </style>
   </head>
   <body
@@ -319,71 +433,74 @@
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Navbar -->
-    <nav
-      class="fixed w-full blur-bg z-40 border-b border-gray-200 dark:border-gray-800"
-    >
+    <nav class="fixed w-full navbar-blur z-40 transition-transform duration-300">
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <a href="#" class="text-2xl font-bold gradient-text">DN</a>
-          <div class="flex items-center space-x-6">
-            <div class="hidden md:flex space-x-8">
-              <a
-                href="#home"
-                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
-                >Home</a
-              >
-              <a
-                href="#about"
-                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
-                >About</a
-              >
-              <a
-                href="#portfolio"
-                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
-                >Portfolio</a
-              >
-              <a
-                href="#contact"
-                class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors"
-                >Contact</a
-              >
-            </div>
+          <a href="#" class="text-2xl font-bold logo-text">DN</a>
+          
+          <!-- Mobile Menu Button -->
+          <button class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="nav-link text-sm font-medium">Home</a>
+            <a href="#about" class="nav-link text-sm font-medium">About</a>
+            <a href="#portfolio" class="nav-link text-sm font-medium">Portfolio</a>
+            <a href="#gallery" class="nav-link text-sm font-medium">Galery</a>
+            <a href="#blog" class="nav-link text-sm font-medium">Blog</a>
+            <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
             
             <button
               id="darkModeToggle"
-              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors mr-[-8px] md:mr-0"
-              >
-              <svg
-                class="w-5 h-5 dark:hidden"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
-              <svg
-                class="w-5 h-5 hidden dark:block"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
-                />
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
               </svg>
             </button>
           </div>
         </div>
       </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="nav-links md:hidden">
+      <div class="flex justify-end mb-8">
+        <button class="mobile-menu-close p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <a href="#home" class="nav-link text-lg font-medium">Home</a>
+      <a href="#about" class="nav-link text-lg font-medium">About</a>
+      <a href="#portfolio" class="nav-link text-lg font-medium">Portfolio</a>
+      <a href="#portfolio" class="nav-link text-sm font-medium">Portfolio</a>
+      <a href="#gallery" class="nav-link text-sm font-medium">Galery</a>
+      <a href="#contact" class="nav-link text-lg font-medium">Contact</a>
+      <div class="mt-8">
+        <button
+          id="mobileDarkModeToggle"
+          class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+          aria-label="Toggle dark mode"
+        >
+          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+          </svg>
+        </button>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <section
@@ -410,7 +527,7 @@
                 Hi, I'm <span class="gradient-text">Danadipa Nugraha</span>
               </h1>
               <p class="text-2xl text-gray-600 dark:text-gray-400 hero-role">
-                Full Stack Developer & UI/UX Designer
+                Full Stack Developer
               </p>
             </div>
             <p class="text-gray-600 dark:text-gray-400 text-lg max-w-xl hero-description">
@@ -420,6 +537,7 @@
               <a
                 href="#contact"
                 class="group px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                onclick="scrollToSection('contact')"
               >
                 Contact Me
                 <svg
@@ -439,6 +557,7 @@
               <a
                 href="#portfolio"
                 class="group px-8 py-4 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all flex items-center gap-2"
+                onclick="scrollToSection('portfolio')"
               >
                 View Portfolio
                 <svg
@@ -537,6 +656,10 @@
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
                     >React/Next.js</span
+                  >
+                  <span
+                    class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
+                    >Flutter</span
                   >
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
@@ -646,32 +769,13 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M9 17C9 20.3137 11.6863 23 15 23C18.3137 23 21 20.3137 21 17C21 13.6863 18.3137 11 15 11C11.6863 11 9 13.6863 9 17Z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 17H14.5C13.6716 17 13 16.3284 13 15.5V14C13 13.1716 13.6716 12.5 14.5 12.5H16C16.8284 12.5 17.5 13.1716 17.5 14V17"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.5 14.5C18.3284 14.5 19 13.8284 19 13C19 12.1716 18.3284 11.5 17.5 11.5C16.6716 11.5 16 12.1716 16 13C16 13.8284 16.6716 14.5 17.5 14.5Z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7.74999 15.0116L4.25624 16.0331C3.60624 16.2206 3.01874 15.6331 3.20624 14.9831L4.22774 11.4894C4.41524 10.8394 5.00274 10.2519 5.65274 10.4394L9.14649 11.4609C9.79649 11.6484 10.384 12.2359 10.1965 12.8859L9.17499 16.3796C8.98749 17.0296 8.39999 17.6171 7.74999 17.4296L7.74999 15.0116Z"
+                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
+            <h3 class="text-xl font-semibold mb-3">Mobile Development</h3>
             <p class="text-gray-600 dark:text-gray-400">
-              Creating intuitive and engaging user interfaces that enhance user experience. From wireframing to interactive prototypes, I focus on user-centered design principles and accessibility standards.
-            </p>
+              Building cross-platform mobile apps using Flutter. From beautiful UI to backend integration, I ensure performant and user-friendly mobile apps.            </p>
           </div>
           <!-- Service Item 3 -->
           <div
@@ -690,13 +794,13 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-3">Backend Development</h3>
+            <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
             <p class="text-gray-600 dark:text-gray-400">
-              Architecting robust backend systems with scalable APIs, efficient database design, and secure authentication. Implementing best practices for performance optimization and system reliability.
+              Creating intuitive and engaging user interfaces that enhance user experience. From wireframing to interactive prototypes, I focus on user-centered design principles and accessibility standards.
             </p>
           </div>
         </div>
@@ -711,30 +815,45 @@
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Portfolio Item 1 -->
-          <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover portfolio-card"
-          >
-            <div class="relative">
+          <div class="portfolio-card group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
                 alt="E-Commerce Platform"
-                class="w-full h-48 object-cover"
+                class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Web</span>
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">E-Commerce</span>
+                  </div>
+                  <p class="text-white text-sm mb-4">A full-featured e-commerce solution with real-time inventory management and secure payment processing.</p>
+                  <div class="flex gap-3">
+                    <a href="#" class="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                      Live Demo
+                    </a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors">
+                      View Code
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
-              <p class="text-gray-600 dark:text-gray-400">
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">E-Commerce Platform</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
                 A full-featured e-commerce solution with real-time inventory management, secure payment processing, and advanced analytics.
               </p>
-              <div class="mt-4 flex flex-wrap gap-2 items-center justify-between">
+              <div class="flex flex-wrap gap-2 items-center justify-between">
                 <div class="flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Django</span>
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
                 </div>
-                <button onclick="openModal('project1')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2">
+                <button onclick="openModal('project1')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2 group-hover:translate-x-1">
                   View Details
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
@@ -743,30 +862,45 @@
           </div>
 
           <!-- Portfolio Item 2 -->
-          <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover portfolio-card"
-          >
-            <div class="relative">
+          <div class="portfolio-card group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
                 alt="Task Management App"
-                class="w-full h-48 object-cover"
+                class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Web</span>
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">SaaS</span>
+                  </div>
+                  <p class="text-white text-sm mb-4">A collaborative project management tool with real-time updates and automated workflows.</p>
+                  <div class="flex gap-3">
+                    <a href="#" class="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                      Live Demo
+                    </a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors">
+                      View Code
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
-              <p class="text-gray-600 dark:text-gray-400">
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Task Management App</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
                 A collaborative project management tool with real-time updates, file sharing, and automated workflows.
               </p>
-              <div class="mt-4 flex flex-wrap gap-2 items-center justify-between">
+              <div class="flex flex-wrap gap-2 items-center justify-between">
                 <div class="flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Node.js</span>
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
                 </div>
-                <button onclick="openModal('project2')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2">
+                <button onclick="openModal('project2')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2 group-hover:translate-x-1">
                   View Details
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
@@ -775,36 +909,60 @@
           </div>
 
           <!-- Portfolio Item 3 -->
-          <div
-            class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover portfolio-card"
-          >
-            <div class="relative">
+          <div class="portfolio-card group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop"
                 alt="AI-Powered Analytics"
-                class="w-full h-48 object-cover"
+                class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">AI</span>
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Analytics</span>
+                  </div>
+                  <p class="text-white text-sm mb-4">An advanced analytics platform leveraging machine learning for business intelligence.</p>
+                  <div class="flex gap-3">
+                    <a href="#" class="px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                      Live Demo
+                    </a>
+                    <a href="#" class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-opacity-90 transition-colors">
+                      View Code
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">AI-Powered Analytics</h3>
-              <p class="text-gray-600 dark:text-gray-400">
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">AI-Powered Analytics</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
                 An advanced analytics platform leveraging machine learning for business intelligence.
               </p>
-              <div class="mt-4 flex flex-wrap gap-2 items-center justify-between">
+              <div class="flex flex-wrap gap-2 items-center justify-between">
                 <div class="flex flex-wrap gap-2">
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TensorFlow</span>
                   <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
                 </div>
-                <button onclick="openModal('project3')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2">
+                <button onclick="openModal('project3')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2 group-hover:translate-x-1">
                   View Details
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
               </div>
             </div>
           </div>
+          
+        </div>
+        <div class="text-center mt-12">
+          <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">
+            View All 
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -958,6 +1116,301 @@
       </div>
     </div>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+          Project Gallery
+        </h2>
+        
+        <!-- Gallery Filter -->
+        <div class="flex justify-center mb-12 space-x-4">
+          <button class="gallery-filter px-6 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all" data-filter="all">
+            All
+          </button>
+          <button class="gallery-filter px-6 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all" data-filter="web">
+            Web
+          </button>
+          <button class="gallery-filter px-6 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all" data-filter="mobile">
+            Mobile
+          </button>
+          <button class="gallery-filter px-6 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all" data-filter="design">
+            Design
+          </button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gallery-grid">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-item group" data-category="web">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Web Project 1" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+                  <p class="text-sm text-gray-200 mb-4">Modern web application with real-time features</p>
+                  <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">React</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Node.js</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="gallery-item group" data-category="mobile">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Mobile Project 1" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 class="text-xl font-semibold mb-2">Fitness App</h3>
+                  <p class="text-sm text-gray-200 mb-4">Cross-platform mobile application</p>
+                  <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Flutter</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Firebase</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="gallery-item group" data-category="design">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop" alt="Design Project 1" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 class="text-xl font-semibold mb-2">UI/UX Design</h3>
+                  <p class="text-sm text-gray-200 mb-4">Modern dashboard design system</p>
+                  <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Figma</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Adobe XD</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="gallery-item group" data-category="web">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Web Project 2" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 class="text-xl font-semibold mb-2">Task Management</h3>
+                  <p class="text-sm text-gray-200 mb-4">Collaborative project management tool</p>
+                  <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Vue.js</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Django</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 5 -->
+          <div class="gallery-item group" data-category="mobile">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Mobile Project 2" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 class="text-xl font-semibold mb-2">Food Delivery App</h3>
+                  <p class="text-sm text-gray-200 mb-4">Real-time food ordering platform</p>
+                  <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Flutter</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Node.js</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item 6 -->
+          <div class="gallery-item group" data-category="design">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop" alt="Design Project 2" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 class="text-xl font-semibold mb-2">Brand Identity</h3>
+                  <p class="text-sm text-gray-200 mb-4">Complete brand design system</p>
+                  <div class="flex gap-2">
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Illustrator</span>
+                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Photoshop</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-24 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+          Latest Blogs
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Blog Post 1 -->
+          <article class="blog-card group bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Flutter Development" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Mobile</span>
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Flutter</span>
+                  </div>
+                  <p class="text-white text-sm mb-4">Learn the basics of Flutter development and how to create beautiful cross-platform mobile applications...</p>
+                  <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                    Read More
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Author" class="w-10 h-10 rounded-full ring-2 ring-primary/20">
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">March 15, 2024</p>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Getting Started with Flutter Development</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                Learn the basics of Flutter development and how to create beautiful cross-platform mobile applications...
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Flutter</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Mobile</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span class="text-sm">1.2k</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 2 -->
+          <article class="blog-card group bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Web Development" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Web</span>
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">React</span>
+                  </div>
+                  <p class="text-white text-sm mb-4">Explore the latest features in React and how to build scalable web applications...</p>
+                  <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                    Read More
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Author" class="w-10 h-10 rounded-full ring-2 ring-primary/20">
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">March 10, 2024</p>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">Modern Web Development with React</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                Explore the latest features in React and how to build scalable web applications...
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">JavaScript</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span class="text-sm">2.5k</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 3 -->
+          <article class="blog-card group bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop" alt="UI/UX Design" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <div class="flex gap-2 mb-3">
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">Design</span>
+                    <span class="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">UI/UX</span>
+                  </div>
+                  <p class="text-white text-sm mb-4">Understanding the fundamental principles of UI/UX design for better user experiences...</p>
+                  <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">
+                    Read More
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" alt="Author" class="w-10 h-10 rounded-full ring-2 ring-primary/20">
+                <div>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">March 5, 2024</p>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">UI/UX Design Principles</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                Understanding the fundamental principles of UI/UX design for better user experiences...
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">UI/UX</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Design</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  <span class="text-sm">3.1k</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- View All Posts Button -->
+        <div class="text-center mt-12">
+          <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl">
+            View All Posts
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-gray-50 dark:bg-gray-800">
       <div class="container mx-auto px-6">
@@ -1086,12 +1539,25 @@
     <script>
       // Dark Mode Toggle
       const darkModeToggle = document.getElementById("darkModeToggle");
-      darkModeToggle.addEventListener("click", () => {
+      const mobileDarkModeToggle = document.getElementById("mobileDarkModeToggle");
+      
+      function toggleDarkMode() {
         document.documentElement.classList.toggle("dark");
-      });
+        // Save preference to localStorage
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("darkMode", isDark);
+      }
 
-      // Set default dark mode
-      document.documentElement.classList.add("dark");
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+      mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+
+      // Check for saved dark mode preference
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode === "true") {
+        document.documentElement.classList.add("dark");
+      } else if (savedDarkMode === "false") {
+        document.documentElement.classList.remove("dark");
+      }
 
       // Scroll Progress Bar
       window.addEventListener("scroll", () => {
@@ -1290,19 +1756,154 @@
         ease: "power3.out"
       });
 
-      // Smooth Scroll Animation
+      // Smooth Scroll Function
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const offset = 80; // Offset untuk navbar
+          const sectionTop = section.offsetTop - offset;
+          
+          window.scrollTo({
+            top: sectionTop,
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      // Update all navigation links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          gsap.to(window, {
-            duration: 1,
-            scrollTo: {
-              y: target,
-              offsetY: 70
-            },
-            ease: "power3.inOut"
+          const sectionId = this.getAttribute('href').substring(1);
+          scrollToSection(sectionId);
+        });
+      });
+
+      // Navbar Scroll Effect
+      let lastScroll = 0;
+      const navbar = document.querySelector('nav');
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+          navbar.classList.remove('scroll-up');
+          return;
+        }
+        
+        if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
+          navbar.classList.remove('scroll-up');
+          navbar.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
+          navbar.classList.remove('scroll-down');
+          navbar.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const mobileMenuClose = document.querySelector('.mobile-menu-close');
+      const navLinks = document.querySelector('.nav-links');
+
+      mobileMenuButton.addEventListener('click', () => {
+        navLinks.classList.add('active');
+      });
+
+      mobileMenuClose.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+
+      // Active Nav Link
+      const sections = document.querySelectorAll('section');
+      const navItems = document.querySelectorAll('.nav-link');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href').substring(1) === current) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // Gallery Filter
+      const galleryFilters = document.querySelectorAll('.gallery-filter');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      galleryFilters.forEach(filter => {
+        filter.addEventListener('click', () => {
+          // Remove active class from all filters
+          galleryFilters.forEach(f => f.classList.remove('bg-primary', 'text-white'));
+          // Add active class to clicked filter
+          filter.classList.add('bg-primary', 'text-white');
+
+          const category = filter.getAttribute('data-filter');
+
+          galleryItems.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+              item.style.display = 'block';
+              // Animate in
+              gsap.from(item, {
+                duration: 0.5,
+                opacity: 0,
+                y: 20,
+                stagger: 0.1
+              });
+            } else {
+              item.style.display = 'none';
+            }
           });
+        });
+      });
+
+      // Gallery Animation
+      gsap.utils.toArray('.gallery-item').forEach((item, i) => {
+        gsap.from(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          duration: 0.8,
+          y: 50,
+          opacity: 0,
+          ease: "power3.out",
+          delay: i * 0.1
+        });
+      });
+
+      // Blog Card Animation
+      gsap.utils.toArray('.blog-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          },
+          duration: 0.8,
+          y: 50,
+          opacity: 0,
+          ease: "power3.out",
+          delay: i * 0.1
         });
       });
     </script>
