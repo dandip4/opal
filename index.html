@@ -5,33 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Naufal Ramdani adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
+      content="Danadipa Nugraha adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
     />
     <meta
       name="keywords"
-      content="Naufal Ramdani, Full Stack Developer, UI/UX Designer, Python, Django, MongoDB, React, Node.js, AWS, web development, mobile development, portfolio, personal website"
+      content="Danadipa Nugraha, Full Stack Developer, UI/UX Designer, Python, Django, MongoDB, React, Node.js, AWS, web development, mobile development, portfolio, personal website"
     />
     <meta
       property="og:title"
-      content="Naufal Ramdani | Full Stack Developer & UI/UX Designer"
+      content="Danadipa Nugraha | Full Stack Developer & UI/UX Designer"
     />
     <meta
       property="og:description"
-      content="Naufal Ramdani adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
+      content="Danadipa Nugraha adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
     />
     <meta property="og:image" content="[URL_GAMBAR_PROFIL_ANDA]" />
     <meta property="og:url" content="[URL_WEBSITE_ANDA]" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Naufal Ramdani | Full Stack Developer & UI/UX Designer"
+      content="Danadipa Nugraha | Full Stack Developer & UI/UX Designer"
     />
     <meta
       name="twitter:description"
-      content="Naufal Ramdani adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
+      content="Danadipa Nugraha adalah Full Stack Developer dan UI/UX Designer berpengalaman. Lihat portofolio proyek web dan mobile yang inovatif menggunakan Python, Django, React, Node.js, dan MongoDB. Temukan solusi digital berkualitas tinggi di sini."
     />
     <meta name="twitter:image" content="[URL_GAMBAR_PROFIL_ANDA]" />
-    <title>Naufal Ramdani | Full Stack Developer & UI/UX Designer</title>
+    <title>Danadipa Nugraha | Full Stack Developer & UI/UX Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
@@ -91,11 +91,215 @@
       .dark .section-bg {
         background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
       }
+
+      /* Custom Cursor Styles */
+      .custom-cursor {
+        width: 20px;
+        height: 20px;
+        background: rgba(75, 85, 99, 0.5);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.2s ease;
+        mix-blend-mode: difference;
+      }
+
+      .custom-cursor-follower {
+        width: 40px;
+        height: 40px;
+        background: rgba(75, 85, 99, 0.2);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9998;
+        transition: transform 0.4s ease;
+        mix-blend-mode: difference;
+      }
+
+      /* Interactive Elements */
+      .interactive-element {
+        position: relative;
+        cursor: none;
+      }
+
+      .interactive-element:hover ~ .custom-cursor {
+        transform: scale(1.5);
+        background: rgba(75, 85, 99, 0.8);
+      }
+
+      .interactive-element:hover ~ .custom-cursor-follower {
+        transform: scale(1.2);
+        background: rgba(75, 85, 99, 0.4);
+      }
+
+      /* Button Hover Effects */
+      .btn-hover-effect {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-hover-effect::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .btn-hover-effect:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      /* Link Hover Effects */
+      .link-hover-effect {
+        position: relative;
+      }
+
+      .link-hover-effect::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+
+      .link-hover-effect:hover::after {
+        width: 100%;
+      }
+
+      /* Card Hover Effects */
+      .card-hover-effect {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-hover-effect:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Portfolio Modal Styles */
+      .portfolio-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .portfolio-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background: white;
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+        border-radius: 20px;
+        position: relative;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+      }
+
+      .dark .modal-content {
+        background: #1f2937;
+      }
+
+      .portfolio-modal.active .modal-content {
+        transform: translateY(0);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: rgba(0, 0, 0, 0.2);
+        transform: rotate(90deg);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .tech-badge {
+        padding: 0.5rem 1rem;
+        background: rgba(75, 85, 99, 0.1);
+        border-radius: 20px;
+        font-size: 0.875rem;
+        color: #4B5563;
+      }
+
+      .dark .tech-badge {
+        background: rgba(75, 85, 99, 0.2);
+        color: #E5E7EB;
+      }
+
+      .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-image:hover {
+        transform: scale(1.05);
+      }
     </style>
   </head>
   <body
     class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans"
   >
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -105,7 +309,7 @@
     >
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <a href="#" class="text-2xl font-bold gradient-text">JD</a>
+          <a href="#" class="text-2xl font-bold gradient-text">DN</a>
           <div class="flex items-center space-x-6">
             <div class="hidden md:flex space-x-8">
               <a
@@ -184,18 +388,17 @@
               <div
                 class="inline-block px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium mb-4"
               >
-                👋 Welcome to my portfolio
+                👋 Welcome to my digital space
               </div>
               <h1 class="text-5xl md:text-7xl font-bold leading-tight">
-                Hi, I'm <span class="gradient-text">Naufal Ramdani</span>
+                Hi, I'm <span class="gradient-text">Danadipa Nugraha</span>
               </h1>
               <p class="text-2xl text-gray-600 dark:text-gray-400">
                 Full Stack Developer & UI/UX Designer
               </p>
             </div>
             <p class="text-gray-600 dark:text-gray-400 text-lg max-w-xl">
-              Creating beautiful and functional digital experiences that make a
-              difference. Let's build something amazing together.
+              Crafting innovative digital solutions that combine elegant design with powerful functionality. Specializing in building scalable web applications and creating intuitive user experiences that drive business growth.
             </p>
             <div class="flex flex-wrap gap-4">
               <a
@@ -239,75 +442,56 @@
             </div>
           </div>
           <div class="relative" data-aos="fade-left" data-aos-duration="1000">
-            <div
-              class="w-80 h-80 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-2xl relative z-10"
-            >
-              <img
-                src="https://scontent-cgk1-2.xx.fbcdn.net/v/t1.6435-9/91297000_930778300690073_7524091191382507520_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=l4lI0nkP_lAQ7kNvwFbupLm&_nc_oc=Adm9OpCuEZulpCD9TFwFUyKJ9iB2fYURIqSnqSL7nxZa7wZPrXHdtGC49SW0dyd-pjA&_nc_zt=23&_nc_ht=scontent-cgk1-2.xx&_nc_gid=SipF1JDY1GRcsTNfO7dToA&oh=00_AfMvO1XWrZeLLzorLWWGER5wRPpoJKGOZkiX9kRUYg1czQ&oe=6875301B"
-                alt="Profile"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div
-              class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary rounded-full opacity-20 blur-2xl animate-pulse"
-            ></div>
-            <div
-              class="absolute -top-6 -left-6 w-32 h-32 bg-primary rounded-full opacity-20 blur-2xl animate-pulse"
-            ></div>
-            <div
-              class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
-            >
-              <div class="flex items-center gap-3">
-                <div
-                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-medium">Fast Delivery</p>
-                  <p class="text-xs text-gray-500">24/7 Support</p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="absolute bottom-1/4 -left-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
-            >
-              <div class="flex items-center gap-3">
-                <div
-                  class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center"
-                >
-                  <svg
-                    class="w-6 h-6 text-secondary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-medium">Quality Work</p>
-                  <p class="text-xs text-gray-500">100% Satisfaction</p>
+            <div class="w-80 h-80 mx-auto relative z-10">
+              <!-- Dekoratif Element -->
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl transform rotate-3"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-2xl transform -rotate-3"></div>
+              
+              <!-- Main Content -->
+              <div class="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+                <div class="space-y-6">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold">Fast Development</h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Quick & Efficient</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold">Quality Code</h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Clean & Maintainable</p>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                      <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold">Customizable</h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">Flexible Solutions</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary/5 rounded-full blur-2xl animate-pulse"></div>
           </div>
         </div>
       </div>
@@ -317,7 +501,7 @@
     <section id="about" class="py-24 bg-gray-50 dark:bg-gray-800">
       <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
-          <h2 class="text-4xl font-bold mb-16 text-center gradient-text" data-aos="fade-up">
+          <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
             About Me
           </h2>
           <div class="grid md:grid-cols-2 gap-16">
@@ -325,62 +509,55 @@
               <p
                 class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
               >
-                Saya adalah seorang Full Stack Developer yang bersemangat dalam
-                menciptakan solusi digital yang inovatif. Dengan pengalaman
-                lebih dari 5 tahun di industri teknologi, saya fokus pada
-                pengembangan aplikasi web yang user-friendly dan scalable. Saya
-                percaya bahwa teknologi yang baik harus mudah digunakan dan
-                memberikan nilai tambah bagi penggunanya.
+                With over 5 years of experience in full-stack development, I've mastered the art of creating seamless digital experiences. My expertise spans from architecting robust backend systems to crafting pixel-perfect frontend interfaces. I'm passionate about implementing cutting-edge technologies and best practices to deliver solutions that not only meet but exceed client expectations.
               </p>
               <div class="space-y-6">
-                <h3 class="text-2xl font-semibold">Skills</h3>
+                <h3 class="text-2xl font-semibold">Technical Expertise</h3>
                 <div class="flex flex-wrap gap-3">
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
-                    >Python</span
+                    >Python/Django</span
                   >
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
-                    >Django</span
+                    >React/Next.js</span
                   >
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
-                    >MongoDB</span
+                    >Node.js/Express</span
                   >
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
-                    >React</span
+                    >MongoDB/PostgreSQL</span
                   >
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
-                    >Node.js</span
+                    >AWS/Docker</span
                   >
                   <span
                     class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-primary rounded-full text-sm font-medium"
-                    >AWS</span
+                    >Figma/Adobe XD</span
                   >
                 </div>
               </div>
               <a
                 href="#"
                 class="inline-block px-8 py-4 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl"
-                >Download CV</a
+                >Download Resume</a
               >
             </div>
             <div class="space-y-8" data-aos="fade-left" data-aos-delay="400">
-              <h3 class="text-2xl font-semibold">Experience</h3>
+              <h3 class="text-2xl font-semibold">Professional Journey</h3>
               <div class="space-y-6">
                 <div
                   class="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-lg hover:shadow-xl transition-all card-hover"
                 >
-                  <h4 class="text-xl font-semibold mb-2">Senior Developer</h4>
+                  <h4 class="text-xl font-semibold mb-2">Senior Full Stack Developer</h4>
                   <p class="text-gray-600 dark:text-gray-400">
                     Tech Solutions Indonesia • 2021 - Present
                   </p>
                   <p class="text-gray-600 dark:text-gray-400 mt-2">
-                    Memimpin tim pengembangan dalam proyek-proyek enterprise,
-                    mengimplementasikan best practices, dan mengoptimalkan
-                    performa aplikasi.
+                    Leading a team of 8 developers in building enterprise-level applications. Implemented CI/CD pipelines, microservices architecture, and cloud infrastructure solutions. Increased application performance by 40% through optimization techniques.
                   </p>
                 </div>
                 <div
@@ -393,8 +570,7 @@
                     Digital Innovation Lab • 2019 - 2021
                   </p>
                   <p class="text-gray-600 dark:text-gray-400 mt-2">
-                    Mengembangkan aplikasi web progresif dan solusi digital
-                    untuk startup, fokus pada user experience dan skalabilitas.
+                    Developed and launched 15+ web applications for startups. Implemented responsive designs, RESTful APIs, and real-time features. Achieved 99.9% uptime through robust error handling and monitoring systems.
                   </p>
                 </div>
               </div>
@@ -407,8 +583,8 @@
     <!-- Services Section -->
     <section id="services" class="py-24 bg-white dark:bg-gray-800">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold mb-16 text-center gradient-text" data-aos="fade-up">
-          My Services
+        <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+          Services I Offer
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Service Item 1 -->
@@ -436,9 +612,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Web Development</h3>
             <p class="text-gray-600 dark:text-gray-400">
-              Membangun website responsif dan performa tinggi dari nol hingga
-              siap diluncurkan, menggunakan teknologi terkini seperti React,
-              Django, dan Node.js.
+              Building modern, scalable web applications using cutting-edge technologies. From single-page applications to complex enterprise solutions, I ensure high performance, security, and maintainable code architecture.
             </p>
           </div>
           <!-- Service Item 2 -->
@@ -484,9 +658,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
             <p class="text-gray-600 dark:text-gray-400">
-              Merancang antarmuka pengguna yang intuitif dan pengalaman pengguna
-              yang menarik, dari wireframe hingga prototipe fungsional,
-              memastikan estetika dan fungsionalitas.
+              Creating intuitive and engaging user interfaces that enhance user experience. From wireframing to interactive prototypes, I focus on user-centered design principles and accessibility standards.
             </p>
           </div>
           <!-- Service Item 3 -->
@@ -514,8 +686,7 @@
             </div>
             <h3 class="text-xl font-semibold mb-3">Backend Development</h3>
             <p class="text-gray-600 dark:text-gray-400">
-              Membangun dan memelihara sisi server aplikasi, termasuk database,
-              API, dan logika bisnis, memastikan skalabilitas dan keamanan data.
+              Architecting robust backend systems with scalable APIs, efficient database design, and secure authentication. Implementing best practices for performance optimization and system reliability.
             </p>
           </div>
         </div>
@@ -525,8 +696,8 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-24 bg-gray-100 dark:bg-gray-900">
       <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold mb-16 text-center gradient-text" data-aos="fade-up">
-          Portfolio
+        <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+          Featured Projects
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Portfolio Item 1 -->
@@ -538,24 +709,28 @@
             <div class="relative">
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
-                alt="Project 1"
+                alt="E-Commerce Platform"
                 class="w-full h-48 object-cover"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
               >
-                <a href="#" class="text-white font-medium">View Project →</a>
+                <button onclick="openModal('project1')" class="text-white font-medium">View Details →</button>
               </div>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
               <p class="text-gray-600 dark:text-gray-400">
-                Platform e-commerce modern dengan fitur real-time inventory,
-                payment gateway integration, dan analytics dashboard. Dibangun
-                menggunakan Django dan React.
+                A full-featured e-commerce solution with real-time inventory management, secure payment processing, and advanced analytics.
               </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Django</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+              </div>
             </div>
           </div>
+
           <!-- Portfolio Item 2 -->
           <div
             class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
@@ -565,24 +740,28 @@
             <div class="relative">
               <img
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
-                alt="Project 2"
+                alt="Task Management App"
                 class="w-full h-48 object-cover"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
               >
-                <a href="#" class="text-white font-medium">View Project →</a>
+                <button onclick="openModal('project2')" class="text-white font-medium">View Details →</button>
               </div>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
               <p class="text-gray-600 dark:text-gray-400">
-                Aplikasi manajemen tugas kolaboratif dengan fitur real-time
-                updates, file sharing, dan progress tracking. Menggunakan
-                Node.js dan MongoDB.
+                A collaborative project management tool with real-time updates, file sharing, and automated workflows.
               </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Node.js</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+              </div>
             </div>
           </div>
+
           <!-- Portfolio Item 3 -->
           <div
             class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover"
@@ -592,37 +771,187 @@
             <div class="relative">
               <img
                 src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop"
-                alt="Project 3"
+                alt="AI-Powered Analytics"
                 class="w-full h-48 object-cover"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
               >
-                <a href="#" class="text-white font-medium">View Project →</a>
+                <button onclick="openModal('project3')" class="text-white font-medium">View Details →</button>
               </div>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">AI-Powered Analytics</h3>
               <p class="text-gray-600 dark:text-gray-400">
-                Sistem analitik berbasis AI untuk prediksi tren bisnis dan
-                optimasi performa. Mengintegrasikan machine learning dengan
-                Python dan TensorFlow.
+                An advanced analytics platform leveraging machine learning for business intelligence.
               </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TensorFlow</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Portfolio Modals -->
+    <div id="project1" class="portfolio-modal">
+      <div class="modal-content p-8">
+        <div class="modal-close" onclick="closeModal('project1')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold gradient-text">E-Commerce Platform</h2>
+          <div class="project-gallery">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Project Screenshot 1" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" alt="Project Screenshot 2" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=400&h=300&fit=crop" alt="Project Screenshot 3" class="gallery-image">
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Django REST Framework</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">MongoDB</span>
+            <span class="tech-badge">Redux</span>
+            <span class="tech-badge">AWS</span>
+            <span class="tech-badge">Docker</span>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Project Overview</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              A comprehensive e-commerce platform built with modern technologies. The system features real-time inventory management, secure payment processing, and advanced analytics capabilities.
+            </p>
+            <h3 class="text-xl font-semibold">Key Features</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+              <li>Real-time inventory tracking and management</li>
+              <li>Secure payment gateway integration</li>
+              <li>Advanced analytics dashboard</li>
+              <li>User authentication and authorization</li>
+              <li>Responsive design for all devices</li>
+              <li>Automated order processing</li>
+            </ul>
+            <h3 class="text-xl font-semibold">Technical Implementation</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Built using Django REST Framework for the backend API, React for the frontend, and MongoDB for the database. Implemented microservices architecture for scalability and used Docker for containerization.
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" class="px-6 py-3 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all">Live Demo</a>
+            <a href="#" class="px-6 py-3 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similar modals for project2 and project3 -->
+    <div id="project2" class="portfolio-modal">
+      <div class="modal-content p-8">
+        <div class="modal-close" onclick="closeModal('project2')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold gradient-text">Task Management App</h2>
+          <div class="project-gallery">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Project Screenshot 1" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Project Screenshot 2" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Project Screenshot 3" class="gallery-image">
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Express</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">MongoDB</span>
+            <span class="tech-badge">Socket.io</span>
+            <span class="tech-badge">AWS S3</span>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Project Overview</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              A modern task management application designed for teams to collaborate effectively. Features real-time updates, file sharing capabilities, and automated workflow management.
+            </p>
+            <h3 class="text-xl font-semibold">Key Features</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+              <li>Real-time task updates and notifications</li>
+              <li>File sharing and document management</li>
+              <li>Team collaboration tools</li>
+              <li>Progress tracking and analytics</li>
+              <li>Automated workflow management</li>
+              <li>Integration with popular tools (Slack, GitHub, etc.)</li>
+            </ul>
+            <h3 class="text-xl font-semibold">Technical Implementation</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Built with Node.js and Express for the backend, React for the frontend, and MongoDB for data storage. Implemented real-time features using Socket.io and file storage with AWS S3.
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" class="px-6 py-3 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all">Live Demo</a>
+            <a href="#" class="px-6 py-3 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="project3" class="portfolio-modal">
+      <div class="modal-content p-8">
+        <div class="modal-close" onclick="closeModal('project3')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+        <div class="space-y-6">
+          <h2 class="text-3xl font-bold gradient-text">AI-Powered Analytics</h2>
+          <div class="project-gallery">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop" alt="Project Screenshot 1" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop" alt="Project Screenshot 2" class="gallery-image">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=300&fit=crop" alt="Project Screenshot 3" class="gallery-image">
+          </div>
+          <div class="tech-stack">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">TensorFlow</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">D3.js</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Docker</span>
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Project Overview</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              An advanced analytics platform that leverages machine learning to provide business intelligence insights. Features predictive analytics, automated reporting, and interactive data visualization.
+            </p>
+            <h3 class="text-xl font-semibold">Key Features</h3>
+            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
+              <li>Predictive analytics using machine learning</li>
+              <li>Real-time data visualization</li>
+              <li>Automated report generation</li>
+              <li>Custom dashboard creation</li>
+              <li>Data import/export capabilities</li>
+              <li>API integration with various data sources</li>
+            </ul>
+            <h3 class="text-xl font-semibold">Technical Implementation</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Built with Python and TensorFlow for machine learning models, React and D3.js for interactive visualizations, and PostgreSQL for data storage. Containerized with Docker for easy deployment.
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" class="px-6 py-3 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all">Live Demo</a>
+            <a href="#" class="px-6 py-3 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-all">View Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Contact Section -->
     <section id="contact" class="py-24 bg-gray-50 dark:bg-gray-800">
       <div class="container mx-auto px-6">
         <div class="max-w-2xl mx-auto text-center">
-          <h2 class="text-4xl font-bold mb-8 gradient-text" data-aos="fade-up">Contact Me</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-12" data-aos="fade-up" data-aos-delay="200">
-            Punya pertanyaan atau ingin berkolaborasi? Jangan ragu untuk
-            menghubungi saya melalui formulir di bawah ini atau melalui media
-            sosial.
+          <h2 class="text-4xl font-bold mb-8 gradient-text">Let's Connect</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-12">
+            Interested in working together? I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Let's create something amazing together!
           </p>
           <form class="space-y-6 text-left" data-aos="fade-up" data-aos-delay="400">
             <div>
@@ -679,7 +1008,7 @@
             </p>
             <div class="flex justify-center space-x-6">
               <a
-                href="https://www.linkedin.com/in/naufal-ramdani"
+                href="https://www.linkedin.com/in/danadipa-nugraha"
                 target="_blank"
                 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors transform hover:scale-110"
               >
@@ -690,7 +1019,7 @@
                 </svg>
               </a>
               <a
-                href="https://github.com/naufal-ramdani"
+                href="https://github.com/danadipa-nugraha"
                 target="_blank"
                 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors transform hover:scale-110"
               >
@@ -701,7 +1030,7 @@
                 </svg>
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:danadipa.n@gmail.com"
                 class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors transform hover:scale-110"
               >
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -715,17 +1044,17 @@
               <p class="mb-2">
                 Email:
                 <a
-                  href="mailto:naufal.ramdani@example.com"
+                  href="mailto:danadipa.n@gmail.com"
                   class="text-primary hover:underline"
-                  >naufal.ramdani@example.com</a
+                  >danadipa.n@gmail.com</a
                 >
               </p>
               <p>
                 Phone:
                 <a
-                  href="tel:+6281234567890"
+                  href="tel:+6289502558010"
                   class="text-primary hover:underline"
-                  >+62 812 3456 7890</a
+                  >+62 895 0255 8010</a
                 >
               </p>
             </div>
@@ -737,7 +1066,7 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-8">
       <div class="container mx-auto px-6 text-center">
-        <p>&copy; 2024 Naufal Ramdani. All rights reserved.</p>
+        <p>&copy; 2025 Danadipa Nugraha. All rights reserved.</p>
       </div>
     </footer>
 
@@ -766,6 +1095,81 @@
         duration: 1000,
         once: true,
         offset: 100
+      });
+
+      // Custom Cursor
+      const cursor = document.querySelector('.custom-cursor');
+      const cursorFollower = document.querySelector('.custom-cursor-follower');
+      const interactiveElements = document.querySelectorAll('a, button, .card-hover, input, textarea');
+
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        setTimeout(() => {
+          cursorFollower.style.left = e.clientX + 'px';
+          cursorFollower.style.top = e.clientY + 'px';
+        }, 100);
+      });
+
+      interactiveElements.forEach(element => {
+        element.classList.add('interactive-element');
+        
+        element.addEventListener('mouseenter', () => {
+          cursor.style.transform = 'scale(1.5)';
+          cursorFollower.style.transform = 'scale(1.2)';
+        });
+        
+        element.addEventListener('mouseleave', () => {
+          cursor.style.transform = 'scale(1)';
+          cursorFollower.style.transform = 'scale(1)';
+        });
+      });
+
+      // Add hover effects to buttons
+      document.querySelectorAll('button, a[href^="#"]').forEach(button => {
+        button.classList.add('btn-hover-effect');
+      });
+
+      // Add hover effects to links
+      document.querySelectorAll('a:not([href^="#"])').forEach(link => {
+        link.classList.add('link-hover-effect');
+      });
+
+      // Add hover effects to cards
+      document.querySelectorAll('.card-hover').forEach(card => {
+        card.classList.add('card-hover-effect');
+      });
+
+      // Portfolio Modal Functions
+      function openModal(projectId) {
+        const modal = document.getElementById(projectId);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(projectId) {
+        const modal = document.getElementById(projectId);
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modal when clicking outside
+      document.querySelectorAll('.portfolio-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal(modal.id);
+          }
+        });
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.portfolio-modal.active').forEach(modal => {
+            closeModal(modal.id);
+          });
+        }
       });
     </script>
   </body>
