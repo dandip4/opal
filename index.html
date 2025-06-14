@@ -200,6 +200,7 @@
         overflow-y: auto;
         opacity: 0;
         transition: opacity 0.3s ease;
+        -webkit-overflow-scrolling: touch; /* Untuk smooth scroll di iOS */
       }
 
       .portfolio-modal.active {
@@ -209,13 +210,45 @@
 
       .modal-content {
         background: white;
-        width: 90%;
+        width: 95%;
         max-width: 1000px;
-        margin: 50px auto;
+        margin: 20px auto;
         border-radius: 20px;
         position: relative;
         transform: translateY(-20px);
         transition: transform 0.3s ease;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 1.5rem;
+      }
+
+      @media (max-width: 640px) {
+        .modal-content {
+          width: 100%;
+          margin: 0;
+          border-radius: 0;
+          max-height: 100vh;
+          padding: 1rem;
+        }
+
+        .project-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-image {
+          height: 200px;
+        }
+
+        .tech-stack {
+          justify-content: center;
+        }
+
+        .modal-close {
+          top: 10px;
+          right: 10px;
+          width: 35px;
+          height: 35px;
+        }
       }
 
       .dark .modal-content {
@@ -239,11 +272,19 @@
         justify-content: center;
         cursor: pointer;
         transition: all 0.3s ease;
+        z-index: 1001;
       }
 
       .modal-close:hover {
         background: rgba(0, 0, 0, 0.2);
         transform: rotate(90deg);
+      }
+
+      /* Prevent body scroll when modal is open */
+      body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
       }
 
       .portfolio-grid {
@@ -333,10 +374,11 @@
                 >Contact</a
               >
             </div>
+            
             <button
               id="darkModeToggle"
-              class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
-            >
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors mr-[-8px] md:mr-0"
+              >
               <svg
                 class="w-5 h-5 dark:hidden"
                 fill="none"
@@ -712,21 +754,24 @@
                 alt="E-Commerce Platform"
                 class="w-full h-48 object-cover"
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
-              >
-                <button onclick="openModal('project1')" class="text-white font-medium">View Details →</button>
-              </div>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
               <p class="text-gray-600 dark:text-gray-400">
                 A full-featured e-commerce solution with real-time inventory management, secure payment processing, and advanced analytics.
               </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Django</span>
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+              <div class="mt-4 flex flex-wrap gap-2 items-center justify-between">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Django</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+                </div>
+                <button onclick="openModal('project1')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2">
+                  View Details
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -743,21 +788,24 @@
                 alt="Task Management App"
                 class="w-full h-48 object-cover"
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
-              >
-                <button onclick="openModal('project2')" class="text-white font-medium">View Details →</button>
-              </div>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
               <p class="text-gray-600 dark:text-gray-400">
                 A collaborative project management tool with real-time updates, file sharing, and automated workflows.
               </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Node.js</span>
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+              <div class="mt-4 flex flex-wrap gap-2 items-center justify-between">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Node.js</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">MongoDB</span>
+                </div>
+                <button onclick="openModal('project2')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2">
+                  View Details
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -774,21 +822,24 @@
                 alt="AI-Powered Analytics"
                 class="w-full h-48 object-cover"
               />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity flex items-end p-6"
-              >
-                <button onclick="openModal('project3')" class="text-white font-medium">View Details →</button>
-              </div>
             </div>
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">AI-Powered Analytics</h3>
               <p class="text-gray-600 dark:text-gray-400">
                 An advanced analytics platform leveraging machine learning for business intelligence.
               </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TensorFlow</span>
-                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+              <div class="mt-4 flex flex-wrap gap-2 items-center justify-between">
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">Python</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">TensorFlow</span>
+                  <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">React</span>
+                </div>
+                <button onclick="openModal('project3')" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all text-sm font-medium flex items-center gap-2">
+                  View Details
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -1145,13 +1196,26 @@
       function openModal(projectId) {
         const modal = document.getElementById(projectId);
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open');
+        
+        // Prevent background scroll
+        const scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
       }
 
       function closeModal(projectId) {
         const modal = document.getElementById(projectId);
         modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        document.body.classList.remove('modal-open');
+        
+        // Restore scroll position
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
 
       // Close modal when clicking outside
@@ -1170,6 +1234,27 @@
             closeModal(modal.id);
           });
         }
+      });
+
+      // Handle mobile touch events
+      document.querySelectorAll('.portfolio-modal').forEach(modal => {
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        modal.addEventListener('touchstart', (e) => {
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        modal.addEventListener('touchmove', (e) => {
+          touchEndY = e.touches[0].clientY;
+          const modalContent = modal.querySelector('.modal-content');
+          const modalTop = modalContent.getBoundingClientRect().top;
+          
+          // Prevent pull-to-refresh when modal is at the top
+          if (modalTop <= 0 && touchEndY > touchStartY) {
+            e.preventDefault();
+          }
+        }, { passive: false });
       });
     </script>
   </body>
