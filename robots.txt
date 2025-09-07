@@ -1,0 +1,80 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://danadipa-nugraha.vercel.app/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Block access to admin areas (if any)
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /tmp/
+
+# Block access to sensitive files
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.zip$
+Disallow: /*.tar.gz$
+Disallow: /*.bak$
+
+# Allow access to important directories
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /assets/
+Allow: /fonts/
+
+# Block access to duplicate content
+Disallow: /*?*
+Disallow: /*&*
+
+# Block access to search results
+Disallow: /search?
+Disallow: /search/
+
+# Allow access to main pages
+Allow: /about
+Allow: /portfolio
+Allow: /gallery
+Allow: /blog
+Allow: /contact
+Allow: /services
+
+# Block access to development files
+Disallow: /.git/
+Disallow: /.svn/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /yarn.lock
+Disallow: /composer.json
+Disallow: /composer.lock
+
+# Block access to backup files
+Disallow: /*.backup
+Disallow: /*.old
+Disallow: /*.orig
+Disallow: /*.save

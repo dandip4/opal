@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://danadipa-nugraha.vercel.app/images/og-image.jpg</image:loc>
+      <image:title>Danadipa Nugraha - Full Stack Developer Portfolio</image:title>
+      <image:caption>Portfolio website Danadipa Nugraha - Full Stack Developer & Mobile Developer Indonesia</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About Section -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/#about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Services Section -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/#services</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Portfolio Section -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/#portfolio</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Gallery Section -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/#gallery</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog Section -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/#blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Section -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/#contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Individual Portfolio Projects -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/portfolio/e-commerce-platform</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop</image:loc>
+      <image:title>E-Commerce Platform - Full Stack Development Project</image:title>
+      <image:caption>Modern e-commerce platform built with Django, React, and MongoDB</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/portfolio/task-management-app</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop</image:loc>
+      <image:title>Task Management App - Collaborative Project Management Tool</image:title>
+      <image:caption>Real-time task management application with team collaboration features</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/portfolio/ai-powered-analytics</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop</image:loc>
+      <image:title>AI-Powered Analytics Platform - Machine Learning Project</image:title>
+      <image:caption>Advanced analytics platform leveraging machine learning for business intelligence</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/blog/getting-started-with-flutter-development</loc>
+    <lastmod>2024-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop</image:loc>
+      <image:title>Getting Started with Flutter Development</image:title>
+      <image:caption>Learn the basics of Flutter development and create beautiful cross-platform mobile applications</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/blog/modern-web-development-with-react</loc>
+    <lastmod>2024-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop</image:loc>
+      <image:title>Modern Web Development with React</image:title>
+      <image:caption>Explore the latest features in React and build scalable web applications</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/blog/ui-ux-design-principles</loc>
+    <lastmod>2024-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop</image:loc>
+      <image:title>UI/UX Design Principles</image:title>
+      <image:caption>Understanding the fundamental principles of UI/UX design for better user experiences</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Service Pages -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/services/web-development</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/services/mobile-development</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/services/ui-ux-design</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Additional Important Pages -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/resume</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/cv</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Skills and Technologies -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/skills</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/technologies</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Experience and Career -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/experience</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/career</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Contact and Social -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/hire-me</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Testimonials and Reviews -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/testimonials</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/reviews</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Case Studies -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/case-studies</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- FAQ -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/faq</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/privacy-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://danadipa-nugraha.vercel.app/terms-of-service</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
