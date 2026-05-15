@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Artikel teknis dan catatan pengembangan — Flutter, web, desain, dan praktik tim oleh Danadipa Nugraha."
+    />
+    <meta name="author" content="Danadipa Nugraha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://danadipa-nugraha.vercel.app/blog.html" />
+    <meta property="og:title" content="Blog | Danadipa Nugraha" />
+    <meta
+      property="og:description"
+      content="Tulisan tentang mobile, web, UI/UX, API, dan alur rilis untuk produk digital."
+    />
+    <meta property="og:url" content="https://danadipa-nugraha.vercel.app/blog.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <title>Blog | Danadipa Nugraha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              primary: "#4B5563",
+              secondary: "#6B7280",
+              accent: "#9CA3AF",
+              dark: "#1F2937",
+              light: "#F3F4F6",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Danadipa Nugraha",
+        "url": "https://danadipa-nugraha.vercel.app/blog.html",
+        "description": "Artikel teknis tentang pengembangan web, mobile, dan desain produk.",
+        "author": {
+          "@type": "Person",
+          "name": "Danadipa Nugraha"
+        },
+        "inLanguage": "id-ID",
+        "publisher": {
+          "@type": "Person",
+          "name": "Danadipa Nugraha"
+        }
+      }
+    </script>
+    <style>
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        z-index: 50;
+        width: 0%;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #bbc3ce 0%, #9699a0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-bg {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      }
+      .dark .section-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      }
+      .btn-hover-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+      .btn-hover-effect:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+      .link-hover-effect {
+        position: relative;
+      }
+      .link-hover-effect::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+      .link-hover-effect:hover::after {
+        width: 100%;
+      }
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        color: #4b5563;
+      }
+      .dark .nav-link {
+        color: #e5e7eb;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .dark .nav-link::after {
+        background: linear-gradient(to right, #e5e7eb, #9ca3af);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .dark .navbar-blur {
+        background: rgba(17, 24, 39, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .logo-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .dark .logo-text {
+        background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .mobile-menu-button {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-menu-button {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          transition: all 0.3s ease;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .nav-links {
+          background: rgba(17, 24, 39, 0.95);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          color: #4b5563;
+        }
+        .dark .nav-links a {
+          color: #e5e7eb;
+        }
+      }
+      .scroll-down {
+        transform: translateY(-100%);
+      }
+      .scroll-up {
+        transform: translateY(0);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+      }
+      .card-hover-effect {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .dark .card-hover-effect:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav class="fixed w-full navbar-blur z-40 transition-transform duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-2xl font-bold logo-text">DN</a>
+          <button
+            class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html#home" class="nav-link text-sm font-medium">Beranda</a>
+            <a href="about.html" class="nav-link text-sm font-medium">Tentang</a>
+            <a href="portfolio.html" class="nav-link text-sm font-medium">Portofolio</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+            <a href="blog.html" class="nav-link text-sm font-medium active">Blog</a>
+            <a href="index.html#contact" class="nav-link text-sm font-medium">Kontak</a>
+            <button
+              id="darkModeToggle"
+              type="button"
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+              aria-label="Ganti mode gelap"
+            >
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-links md:hidden" id="mobile-menu" role="navigation" aria-label="Navigasi seluler">
+      <div class="flex justify-end mb-8">
+        <button
+          type="button"
+          class="mobile-menu-close p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <a href="index.html#home" class="nav-link text-lg font-medium">Beranda</a>
+      <a href="about.html" class="nav-link text-lg font-medium">Tentang</a>
+      <a href="portfolio.html" class="nav-link text-lg font-medium">Portofolio</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+      <a href="blog.html" class="nav-link text-sm font-medium active">Blog</a>
+      <a href="index.html#contact" class="nav-link text-lg font-medium">Kontak</a>
+      <div class="mt-8">
+        <button
+          id="mobileDarkModeToggle"
+          type="button"
+          class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+          aria-label="Ganti mode gelap"
+        >
+          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <a
+        href="#blog-list-start"
+        class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:left-4 focus:top-24 focus:rounded-md focus:px-4 focus:py-2.5 focus:bg-primary focus:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-900"
+        >Langsung ke daftar artikel</a>
+      <header
+        class="section-bg border-b border-gray-200/80 dark:border-gray-700/80 pt-28 pb-10 md:pb-14 relative overflow-hidden"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 opacity-[0.22] dark:opacity-[0.12] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjAyIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzk0LTQtNHMtNC0xLjc5LTQgNCAxLjc5IDQgNCA0LTEuNzk0eiIvPjwvZz48L2c+PC9zdmc+')]"
+        ></div>
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl relative z-10">
+          <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div class="lg:col-span-8 text-left">
+              <nav
+                class="page-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-5"
+                aria-label="Breadcrumb"
+              >
+                <a href="index.html" class="hover:text-primary dark:hover:text-gray-200 transition-colors">Beranda</a>
+                <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+                <span class="text-gray-800 dark:text-gray-200 font-medium">Blog</span>
+              </nav>
+              <h1
+                class="page-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4 leading-[1.08]"
+              >
+                <span class="gradient-text">Artikel &amp; catatan</span>
+              </h1>
+              <p class="page-sub text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                Tulisan singkat tentang Flutter, web modern, desain produk, API, dan cara tim merilis fitur dengan
+                risiko terkendali. Filter membantu menemukan topik.
+              </p>
+            </div>
+            <div class="lg:col-span-4 lg:text-right lg:pt-2 space-y-3">
+              <p class="page-meta text-sm text-gray-500 dark:text-gray-400 lg:ml-auto lg:max-w-xs">
+                Entri blog memiliki halaman detail di folder
+                <code class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">posts/</code>
+                — nanti bisa diganti sumber dari CMS atau Markdown.
+              </p>
+              <div
+                class="page-meta-line hidden lg:block h-px w-24 bg-gradient-to-l from-primary/50 to-transparent ml-auto"
+                aria-hidden="true"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section
+        class="blog-filters-section py-10 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50"
+        aria-label="Filter dan pencarian artikel"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div class="min-w-0 flex-1">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Kategori</p>
+              <div class="flex flex-wrap gap-2" role="group" aria-label="Kategori blog">
+                <button
+                  type="button"
+                  class="blog-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-primary text-white"
+                  data-filter="all"
+                >
+                  Semua
+                </button>
+                <button
+                  type="button"
+                  class="blog-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+                  data-filter="web"
+                >
+                  Web
+                </button>
+                <button
+                  type="button"
+                  class="blog-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+                  data-filter="mobile"
+                >
+                  Mobile
+                </button>
+                <button
+                  type="button"
+                  class="blog-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+                  data-filter="design"
+                >
+                  Desain
+                </button>
+              </div>
+            </div>
+            <div class="blog-search-wrap w-full lg:max-w-sm shrink-0">
+              <label for="blogSearch" class="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Cari</label>
+              <div class="relative">
+                <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400" aria-hidden="true">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
+                  </svg>
+                </span>
+                <input
+                  id="blogSearch"
+                  type="search"
+                  name="blog-search"
+                  autocomplete="off"
+                  placeholder="Judul, topik, atau tag…"
+                  class="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-gray-600 dark:bg-gray-800/80 dark:text-gray-100 dark:placeholder:text-gray-500"
+                />
+              </div>
+            </div>
+          </div>
+          <p id="blog-results-count" class="mt-4 text-sm text-gray-600 dark:text-gray-400" aria-live="polite">
+            Menampilkan 6 dari 6 artikel
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="blog-list-start"
+        tabindex="-1"
+        class="py-14 md:py-16 bg-gray-50 dark:bg-gray-900 outline-none"
+        aria-labelledby="heading-blog-grid"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <h2 id="heading-blog-grid" class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Artikel terbaru
+          </h2>
+          <p class="mt-1 max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Ringkasan singkat dan perkiraan waktu baca membantu memilih tulisan sebelum membuka halaman lengkap.
+          </p>
+          <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3" id="blog-page-grid">
+            <article
+              class="blog-card card-hover group flex h-full flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/80 dark:border-gray-700/80"
+              data-category="mobile"
+            >
+              <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900/80">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=360&fit=crop"
+                  alt="Ilustrasi artikel Flutter"
+                  class="absolute inset-0 h-full w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-5">
+                    <p class="text-white text-sm mb-3">
+                      Langkah awal widget, state, dan pola navigasi agar kode Flutter tetap rapi seiring fitur bertambah.
+                    </p>
+                    <a
+                      href="posts/memulai-flutter-produk.html"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      Baca ringkasan
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 class="text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  <a
+                    href="posts/memulai-flutter-produk.html"
+                    class="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+                    >Memulai Flutter untuk produk nyata</a>
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-400">
+                  Dari struktur folder hingga uji widget kecil sebelum layar besar — supaya tim tidak tersendat saat rilis
+                  pertama.
+                </p>
+                <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop"
+                    alt="Danadipa Nugraha"
+                    width="40"
+                    height="40"
+                    class="h-10 w-10 shrink-0 rounded-full ring-2 ring-primary/20"
+                    decoding="async"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime="2024-03-15">15 Maret 2024</time><span class="text-gray-400" aria-hidden="true"> · </span><span>± 8 menit baca</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Flutter</span>
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Mobile</span>
+                </div>
+                <div class="mt-auto pt-4">
+                  <a
+                    href="posts/memulai-flutter-produk.html"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Baca artikel lengkap
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="blog-card card-hover group flex h-full flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/80 dark:border-gray-700/80"
+              data-category="web"
+            >
+              <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900/80">
+                <img
+                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=360&fit=crop"
+                  alt="Ilustrasi artikel React"
+                  class="absolute inset-0 h-full w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-5">
+                    <p class="text-white text-sm mb-3">
+                      Server components, data fetching, dan batasan yang perlu disepakati tim agar halaman tetap cepat.
+                    </p>
+                    <a
+                      href="posts/web-react-modern.html"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      Baca ringkasan
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 class="text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  <a
+                    href="posts/web-react-modern.html"
+                    class="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+                    >Web modern dengan React: apa yang perlu disepakati dulu</a>
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-400">
+                  Konvensi folder, pola komponen, dan cara membagi domain agar onboarding engineer baru tidak mahal.
+                </p>
+                <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop"
+                    alt="Danadipa Nugraha"
+                    width="40"
+                    height="40"
+                    class="h-10 w-10 shrink-0 rounded-full ring-2 ring-primary/20"
+                    decoding="async"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime="2024-03-10">10 Maret 2024</time><span class="text-gray-400" aria-hidden="true"> · </span><span>± 10 menit baca</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">React</span>
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">JavaScript</span>
+                </div>
+                <div class="mt-auto pt-4">
+                  <a
+                    href="posts/web-react-modern.html"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Baca artikel lengkap
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="blog-card card-hover group flex h-full flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/80 dark:border-gray-700/80"
+              data-category="design"
+            >
+              <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900/80">
+                <img
+                  src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=360&fit=crop"
+                  alt="Ilustrasi artikel desain UI"
+                  class="absolute inset-0 h-full w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-5">
+                    <p class="text-white text-sm mb-3">
+                      Hierarki, jarak, dan umpan balik cepat dari pengguna untuk menyelaraskan desain dengan engineering.
+                    </p>
+                    <a
+                      href="posts/prinsip-ui-ux-developer.html"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      Baca ringkasan
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 class="text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  <a
+                    href="posts/prinsip-ui-ux-developer.html"
+                    class="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+                    >Prinsip UI/UX yang membantu developer</a>
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-400">
+                  Checklist singkat sebelum handoff ke front-end: state kosong, error, dan aksesibilitas dasar.
+                </p>
+                <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop"
+                    alt="Danadipa Nugraha"
+                    width="40"
+                    height="40"
+                    class="h-10 w-10 shrink-0 rounded-full ring-2 ring-primary/20"
+                    decoding="async"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime="2024-03-05">5 Maret 2024</time><span class="text-gray-400" aria-hidden="true"> · </span><span>± 7 menit baca</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">UI/UX</span>
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Desain</span>
+                </div>
+                <div class="mt-auto pt-4">
+                  <a
+                    href="posts/prinsip-ui-ux-developer.html"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Baca artikel lengkap
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="blog-card card-hover group flex h-full flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/80 dark:border-gray-700/80"
+              data-category="web"
+            >
+              <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900/80">
+                <img
+                  src="https://images.unsplash.com/photo-1555065226-8e3a73e9dd59?w=600&h=360&fit=crop"
+                  alt="Ilustrasi artikel API"
+                  class="absolute inset-0 h-full w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-5">
+                    <p class="text-white text-sm mb-3">
+                      Versi, kesalahan yang dapat diprediksi, dan idempotensi — tiga hal yang mengurangi pertanyaan berulang di Slack.
+                    </p>
+                    <a
+                      href="posts/api-rest-konsisten.html"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      Baca ringkasan
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 class="text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  <a
+                    href="posts/api-rest-konsisten.html"
+                    class="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+                    >Mendesain API REST yang konsisten</a>
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-400">
+                  Kontrak JSON, kode status, dan dokumentasi ringan yang cukup untuk mobile dan web mengonsumsi bersama.
+                </p>
+                <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop"
+                    alt="Danadipa Nugraha"
+                    width="40"
+                    height="40"
+                    class="h-10 w-10 shrink-0 rounded-full ring-2 ring-primary/20"
+                    decoding="async"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime="2024-02-28">28 Februari 2024</time><span class="text-gray-400" aria-hidden="true"> · </span><span>± 9 menit baca</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">API</span>
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Backend</span>
+                </div>
+                <div class="mt-auto pt-4">
+                  <a
+                    href="posts/api-rest-konsisten.html"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Baca artikel lengkap
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="blog-card card-hover group flex h-full flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/80 dark:border-gray-700/80"
+              data-category="web"
+            >
+              <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900/80">
+                <img
+                  src="https://images.unsplash.com/photo-1667376296639-d0a46a2f11d0?w=600&h=360&fit=crop"
+                  alt="Ilustrasi CI/CD"
+                  class="absolute inset-0 h-full w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-5">
+                    <p class="text-white text-sm mb-3">
+                      Satu pipeline yang jelas lebih baik daripada banyak skrip ad hoc yang hanya dipahami satu orang.
+                    </p>
+                    <a
+                      href="posts/ci-cd-tim-kecil.html"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      Baca ringkasan
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 class="text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  <a
+                    href="posts/ci-cd-tim-kecil.html"
+                    class="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+                    >CI/CD sederhana untuk tim kecil</a>
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-400">
+                  Uji otomatis wajib minimum, artefak yang jelas, dan rollback yang tidak menakutkan stakeholder.
+                </p>
+                <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop"
+                    alt="Danadipa Nugraha"
+                    width="40"
+                    height="40"
+                    class="h-10 w-10 shrink-0 rounded-full ring-2 ring-primary/20"
+                    decoding="async"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime="2024-02-20">20 Februari 2024</time><span class="text-gray-400" aria-hidden="true"> · </span><span>± 6 menit baca</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">DevOps</span>
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Git</span>
+                </div>
+                <div class="mt-auto pt-4">
+                  <a
+                    href="posts/ci-cd-tim-kecil.html"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Baca artikel lengkap
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="blog-card card-hover group flex h-full flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/80 dark:border-gray-700/80"
+              data-category="design"
+            >
+              <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900/80">
+                <img
+                  src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=360&fit=crop"
+                  alt="Ilustrasi tipografi"
+                  class="absolute inset-0 h-full w-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="360"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-5">
+                    <p class="text-white text-sm mb-3">
+                      Skala tipe, baseline grid, dan token warna mengurangi debat subjektif saat review desain.
+                    </p>
+                    <a
+                      href="posts/tipografi-sistem-desain.html"
+                      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                    >
+                      Baca ringkasan
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col p-6 sm:p-7">
+                <h3 class="text-xl font-semibold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  <a
+                    href="posts/tipografi-sistem-desain.html"
+                    class="rounded hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
+                    >Tipografi dan grid dalam sistem desain</a>
+                </h3>
+                <p class="mt-2 text-base leading-relaxed text-gray-600 line-clamp-3 dark:text-gray-400">
+                  Menyelaraskan Figma dengan implementasi Tailwind atau CSS variables tanpa mengorbankan fleksibilitas.
+                </p>
+                <div class="mt-4 flex items-center gap-3 border-t border-gray-100 pt-4 dark:border-gray-700/80">
+                  <img
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop"
+                    alt="Danadipa Nugraha"
+                    width="40"
+                    height="40"
+                    class="h-10 w-10 shrink-0 rounded-full ring-2 ring-primary/20"
+                    decoding="async"
+                  />
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-medium text-gray-900 dark:text-white">Danadipa Nugraha</p>
+                    <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
+                      <time datetime="2024-02-12">12 Februari 2024</time><span class="text-gray-400" aria-hidden="true"> · </span><span>± 8 menit baca</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Figma</span>
+                  <span class="rounded-full bg-primary/10 px-3 py-1 text-primary">Sistem desain</span>
+                </div>
+                <div class="mt-auto pt-4">
+                  <a
+                    href="posts/tipografi-sistem-desain.html"
+                    class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Baca artikel lengkap
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <aside class="blog-cta-aside py-12 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30">
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <p class="text-sm text-gray-600 dark:text-gray-400 max-w-xl">
+            Ada topik yang ingin dibahas bersama? Kirim pesan lewat formulir kontak — saya membaca semua pertanyaan yang
+            jelas dan sopan.
+          </p>
+          <a
+            href="index.html#contact"
+            class="inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-opacity-90 transition-colors shadow-sm shrink-0"
+          >
+            Ke kontak
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+      <div class="container mx-auto px-6 text-center text-sm">
+        <p>&copy; 2024 Danadipa Nugraha. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const mobileDarkModeToggle = document.getElementById("mobileDarkModeToggle");
+
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", document.documentElement.classList.contains("dark"));
+      }
+
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+      mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode === "true") {
+        document.documentElement.classList.add("dark");
+      } else if (savedDarkMode === "false") {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.addEventListener("scroll", function () {
+        const el = document.getElementById("scrollProgress");
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        el.style.width = (scrollable > 0 ? (scrolled / scrollable) * 100 : 0) + "%";
+      });
+
+      document.querySelectorAll('button, a[href^="#"]').forEach(function (el) {
+        el.classList.add("btn-hover-effect");
+      });
+      document.querySelectorAll('a:not([href^="#"])').forEach(function (link) {
+        link.classList.add("link-hover-effect");
+      });
+
+      document.querySelectorAll(".blog-card").forEach(function (el) {
+        el.classList.add("card-hover-effect");
+      });
+
+      let lastScroll = 0;
+      const navbar = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          navbar.classList.remove("scroll-up");
+          return;
+        }
+        if (currentScroll > lastScroll && !navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-up");
+          navbar.classList.add("scroll-down");
+        } else if (currentScroll < lastScroll && navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-down");
+          navbar.classList.add("scroll-up");
+        }
+        lastScroll = currentScroll;
+      });
+
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenuClose = document.querySelector(".mobile-menu-close");
+      const navLinks = document.querySelector(".nav-links");
+      mobileMenuButton.addEventListener("click", function () {
+        navLinks.classList.add("active");
+      });
+      mobileMenuClose.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      var activeBlogFilter = "all";
+      var blogSearchEl = document.getElementById("blogSearch");
+      var blogResultsEl = document.getElementById("blog-results-count");
+      var BLOG_CARD_TOTAL = 6;
+
+      function blogCardMatchesQuery(card, q) {
+        if (!q) return true;
+        return (card.textContent || "").toLowerCase().indexOf(q) !== -1;
+      }
+
+      function applyBlogListingFilter(runCardAnimation) {
+        var q = (blogSearchEl && blogSearchEl.value) ? blogSearchEl.value.trim().toLowerCase() : "";
+        var visible = [];
+        document.querySelectorAll(".blog-card").forEach(function (card) {
+          var cat = card.getAttribute("data-category");
+          var catOk = activeBlogFilter === "all" || cat === activeBlogFilter;
+          var qOk = blogCardMatchesQuery(card, q);
+          var show = catOk && qOk;
+          card.style.display = show ? "" : "none";
+          if (show) visible.push(card);
+        });
+        if (blogResultsEl) {
+          blogResultsEl.textContent =
+            "Menampilkan " + visible.length + " dari " + BLOG_CARD_TOTAL + " artikel";
+        }
+        var reduceFilter =
+          typeof window.matchMedia === "function" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (
+          runCardAnimation &&
+          !reduceFilter &&
+          typeof gsap !== "undefined" &&
+          visible.length
+        ) {
+          requestAnimationFrame(function () {
+            if (typeof ScrollTrigger !== "undefined") {
+              ScrollTrigger.refresh();
+            }
+            gsap.from(visible, {
+              opacity: 0,
+              y: 24,
+              duration: 0.5,
+              stagger: 0.06,
+              ease: "power3.out",
+              overwrite: "auto",
+            });
+          });
+        }
+      }
+
+      document.querySelectorAll(".blog-filter").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          activeBlogFilter = btn.getAttribute("data-filter");
+          document.querySelectorAll(".blog-filter").forEach(function (b) {
+            b.classList.remove("bg-primary", "text-white");
+            b.classList.add("bg-gray-200", "dark:bg-gray-700", "text-gray-800", "dark:text-gray-200");
+          });
+          btn.classList.add("bg-primary", "text-white");
+          btn.classList.remove("bg-gray-200", "dark:bg-gray-700", "text-gray-800", "dark:text-gray-200");
+
+          applyBlogListingFilter(true);
+        });
+      });
+
+      if (blogSearchEl) {
+        var searchTid = null;
+        blogSearchEl.addEventListener("input", function () {
+          if (searchTid) clearTimeout(searchTid);
+          searchTid = setTimeout(function () {
+            applyBlogListingFilter(false);
+          }, 160);
+        });
+      }
+
+      applyBlogListingFilter(false);
+
+      var reduceMotion =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      window.addEventListener("load", function () {
+        if (typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.refresh();
+        }
+      });
+
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+        var dur = reduceMotion ? 0.35 : 0.8;
+        var durHead = reduceMotion ? 0.42 : 0.75;
+        var yIn = reduceMotion ? 14 : 50;
+        var ySm = reduceMotion ? 10 : 24;
+        var yHead = reduceMotion ? 12 : 32;
+        var delayChip = reduceMotion ? 0.03 : 0.08;
+        var delayCard = reduceMotion ? 0.04 : 0.1;
+
+        var headTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        headTl
+          .from(".page-breadcrumb", { opacity: 0, y: yHead, duration: durHead })
+          .from(".page-title", { opacity: 0, y: yHead, duration: durHead * 1.08 }, "-=0.48")
+          .from(".page-sub", { opacity: 0, y: ySm, duration: durHead * 0.95 }, "-=0.52")
+          .from(".page-meta", { opacity: 0, y: ySm, duration: durHead * 0.9 }, "-=0.5")
+          .from(
+            ".page-meta-line",
+            { scaleX: 0, opacity: 0, transformOrigin: "right center", duration: durHead * 0.72 },
+            "-=0.42"
+          );
+
+        gsap.utils.toArray(".blog-filters-section .blog-filter").forEach(function (chip, i) {
+          gsap.from(chip, {
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".blog-filters-section",
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: ySm,
+            duration: reduceMotion ? 0.28 : 0.72,
+            ease: "power3.out",
+            delay: i * delayChip,
+          });
+        });
+
+        gsap.from(".blog-search-wrap", {
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ".blog-filters-section",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: ySm,
+          duration: reduceMotion ? 0.28 : 0.72,
+          ease: "power3.out",
+          delay: 4 * delayChip,
+        });
+
+        gsap.utils.toArray("#blog-page-grid .blog-card").forEach(function (card, i) {
+          gsap.from(card, {
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 92%",
+              toggleActions: "play none none reverse",
+            },
+            duration: dur,
+            y: yIn,
+            opacity: 0,
+            ease: "power3.out",
+            delay: i * delayCard,
+          });
+        });
+
+        gsap.from(".blog-cta-aside > div", {
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ".blog-cta-aside",
+            start: "top 92%",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: reduceMotion ? 16 : 44,
+          duration: dur,
+          ease: "power3.out",
+        });
+
+        requestAnimationFrame(function () {
+          ScrollTrigger.refresh();
+        });
+      }
+    </script>
+  </body>
+</html>

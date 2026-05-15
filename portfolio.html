@@ -1,0 +1,815 @@
+﻿<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portofolio proyek web, mobile, dan analitik — Danadipa Nugraha, Full Stack & Mobile Developer Indonesia."
+    />
+    <meta name="author" content="Danadipa Nugraha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://danadipa-nugraha.vercel.app/portfolio.html" />
+    <meta property="og:title" content="Portofolio | Danadipa Nugraha" />
+    <meta
+      property="og:description"
+      content="Kumpulan proyek web, mobile, dan data — buka detail di modal untuk konteks teknis."
+    />
+    <meta property="og:url" content="https://danadipa-nugraha.vercel.app/portfolio.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <title>Portofolio | Danadipa Nugraha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              primary: "#4B5563",
+              secondary: "#6B7280",
+              accent: "#9CA3AF",
+              dark: "#1F2937",
+              light: "#F3F4F6",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Portofolio Danadipa Nugraha",
+        "url": "https://danadipa-nugraha.vercel.app/portfolio.html",
+        "description": "Kumpulan proyek pengembangan web, mobile, dan platform data.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Danadipa Nugraha Portfolio",
+          "url": "https://danadipa-nugraha.vercel.app"
+        }
+      }
+    </script>
+    <style>
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        z-index: 50;
+        width: 0%;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #bbc3ce 0%, #9699a0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-bg {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      }
+      .dark .section-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      }
+      .btn-hover-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+      .btn-hover-effect:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+      .link-hover-effect {
+        position: relative;
+      }
+      .link-hover-effect::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+      .link-hover-effect:hover::after {
+        width: 100%;
+      }
+      .tech-badge {
+        padding: 0.35rem 0.75rem;
+        background: rgba(75, 85, 99, 0.1);
+        border-radius: 9999px;
+        font-size: 0.8125rem;
+        color: #4b5563;
+      }
+      .dark .tech-badge {
+        background: rgba(75, 85, 99, 0.25);
+        color: #e5e7eb;
+      }
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        color: #4b5563;
+      }
+      .dark .nav-link {
+        color: #e5e7eb;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .dark .nav-link::after {
+        background: linear-gradient(to right, #e5e7eb, #9ca3af);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .dark .navbar-blur {
+        background: rgba(17, 24, 39, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .logo-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .dark .logo-text {
+        background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .mobile-menu-button {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-menu-button {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          transition: all 0.3s ease;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .nav-links {
+          background: rgba(17, 24, 39, 0.95);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          color: #4b5563;
+        }
+        .dark .nav-links a {
+          color: #e5e7eb;
+        }
+      }
+      .scroll-down {
+        transform: translateY(-100%);
+      }
+      .scroll-up {
+        transform: translateY(0);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+      }
+      .card-hover-effect {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .dark .card-hover-effect:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+      }
+      .portfolio-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .portfolio-modal.active {
+        display: block;
+        opacity: 1;
+      }
+      .modal-content {
+        background: white;
+        width: 95%;
+        max-width: 720px;
+        margin: 20px auto;
+        border-radius: 20px;
+        position: relative;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+        padding: 1.5rem;
+      }
+      .modal-content.modal-content--rich {
+        max-width: 56rem;
+      }
+      .modal-detail h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: inherit;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+      .modal-detail p,
+      .modal-detail li {
+        color: #4b5563;
+      }
+      .dark .modal-detail p,
+      .dark .modal-detail li {
+        color: #9ca3af;
+      }
+      .modal-rbac-table {
+        width: 100%;
+        font-size: 0.8125rem;
+        border-collapse: collapse;
+        margin: 0.75rem 0 1rem;
+      }
+      .modal-rbac-table th,
+      .modal-rbac-table td {
+        border: 1px solid #e5e7eb;
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+      }
+      .dark .modal-rbac-table th,
+      .dark .modal-rbac-table td {
+        border-color: #374151;
+      }
+      .modal-rbac-table th {
+        background: #f3f4f6;
+        font-weight: 600;
+      }
+      .dark .modal-rbac-table th {
+        background: #111827;
+      }
+      .modal-architecture {
+        color: #374151;
+        line-height: 1.5;
+      }
+      .dark .modal-architecture {
+        color: #d1d5db;
+      }
+      .dark .modal-content {
+        background: #1f2937;
+      }
+      .portfolio-modal.active .modal-content {
+        transform: translateY(0);
+      }
+      .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        border: none;
+        color: inherit;
+      }
+      .dark .modal-close {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .modal-close:hover {
+        background: rgba(0, 0, 0, 0.15);
+        transform: rotate(90deg);
+      }
+      .dark .modal-close:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
+        margin: 1rem 0;
+      }
+      .gallery-image {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      .modal-tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+      @media (max-width: 640px) {
+        .modal-content {
+          width: 100%;
+          margin: 0;
+          border-radius: 0;
+          min-height: 100%;
+        }
+        .modal-close {
+          top: 12px;
+          right: 12px;
+          width: 36px;
+          height: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav class="fixed w-full navbar-blur z-40 transition-transform duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-2xl font-bold logo-text">DN</a>
+          <button
+            class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html#home" class="nav-link text-sm font-medium">Beranda</a>
+            <a href="about.html" class="nav-link text-sm font-medium">Tentang</a>
+            <a href="portfolio.html" class="nav-link text-sm font-medium active">Portofolio</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+            <a href="blog.html" class="nav-link text-sm font-medium">Blog</a>
+            <a href="index.html#contact" class="nav-link text-sm font-medium">Kontak</a>
+            <button
+              id="darkModeToggle"
+              type="button"
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+              aria-label="Ganti mode gelap"
+            >
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-links md:hidden" id="mobile-menu" role="navigation" aria-label="Navigasi seluler">
+      <div class="flex justify-end mb-8">
+        <button
+          type="button"
+          class="mobile-menu-close p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <a href="index.html#home" class="nav-link text-lg font-medium">Beranda</a>
+      <a href="about.html" class="nav-link text-lg font-medium">Tentang</a>
+      <a href="portfolio.html" class="nav-link text-lg font-medium active">Portofolio</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+      <a href="blog.html" class="nav-link text-sm font-medium">Blog</a>
+      <a href="index.html#contact" class="nav-link text-lg font-medium">Kontak</a>
+      <div class="mt-8">
+        <button
+          id="mobileDarkModeToggle"
+          type="button"
+          class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+          aria-label="Ganti mode gelap"
+        >
+          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <header
+        class="section-bg border-b border-gray-200/80 dark:border-gray-700/80 pt-28 pb-10 md:pb-14 relative overflow-hidden"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 opacity-[0.22] dark:opacity-[0.12] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjAyIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzk0LTQtNHMtNC0xLjc5LTQgNCAxLjc5IDQgNCA0LTEuNzk0eiIvPjwvZz48L2c+PC9zdmc+')]"
+        ></div>
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl relative z-10">
+          <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div class="lg:col-span-8 text-left">
+              <nav
+                class="page-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-5"
+                aria-label="Breadcrumb"
+              >
+                <a href="index.html" class="hover:text-primary dark:hover:text-gray-200 transition-colors">Beranda</a>
+                <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+                <span class="text-gray-800 dark:text-gray-200 font-medium">Portofolio</span>
+              </nav>
+              <h1
+                class="page-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4 leading-[1.08]"
+              >
+                <span class="gradient-text">Proyek terpilih</span>
+              </h1>
+              <p class="page-sub text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                Klik <strong class="font-medium text-gray-800 dark:text-gray-200">Detail</strong> pada kartu untuk
+                membaca ringkasan proyek. Filter kategori dan tahun membantu menelusuri 27 entri dari CV (data dummy, detail menyusul).
+              </p>
+            </div>
+            <div class="lg:col-span-4 lg:text-right lg:pt-2 space-y-3">
+              <p class="page-meta text-sm text-gray-500 dark:text-gray-400 lg:ml-auto lg:max-w-xs">
+                Kurasi studi kasus singkat dalam modal — fokus pada masalah, solusi, dan teknologi.
+              </p>
+              <div
+                class="page-meta-line hidden lg:block h-px w-24 bg-gradient-to-l from-primary/50 to-transparent ml-auto"
+                aria-hidden="true"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section
+        class="portfolio-filters-section py-10 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50"
+        aria-label="Filter proyek"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Kategori</p>
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Kategori proyek">
+            <button
+              type="button"
+              class="portfolio-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-primary text-white"
+              data-filter="all"
+            >
+              Semua
+            </button>
+            <button
+              type="button"
+              class="portfolio-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-filter="web"
+            >
+              Web
+            </button>
+            <button
+              type="button"
+              class="portfolio-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-filter="mobile"
+            >
+              Mobile
+            </button>
+            <button
+              type="button"
+              class="portfolio-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-filter="data"
+            >
+              Sistem informasi
+            </button>
+          </div>
+          <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mt-6 mb-3">Tahun</p>
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filter tahun">
+            <button
+              type="button"
+              class="portfolio-year-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-primary text-white"
+              data-year="all"
+            >
+              Semua tahun
+            </button>
+            <button
+              type="button"
+              class="portfolio-year-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-year="2026"
+            >
+              2026
+            </button>
+            <button
+              type="button"
+              class="portfolio-year-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-year="2025"
+            >
+              2025
+            </button>
+            <button
+              type="button"
+              class="portfolio-year-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-year="2024"
+            >
+              2024
+            </button>
+            <button
+              type="button"
+              class="portfolio-year-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-year="2023"
+            >
+              2023
+            </button>
+            <button
+              type="button"
+              class="portfolio-year-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-year="2022"
+            >
+              2022
+            </button>
+          </div>
+          <p id="portfolio-results-count" class="mt-4 text-sm text-gray-600 dark:text-gray-400" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="py-14 md:py-16 bg-gray-50 dark:bg-gray-900" aria-labelledby="heading-grid">
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <h2 id="heading-grid" class="sr-only">Daftar proyek</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid"></div>
+        </div>
+      </section>
+
+    <!-- Modal detail proyek (dinamis) -->
+    <div id="portfolio-detail-modal" class="portfolio-modal" role="dialog" aria-modal="true" aria-labelledby="portfolio-modal-title">
+      <div class="modal-content p-6 md:p-8">
+        <button type="button" class="modal-close" aria-label="Tutup">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <h2 id="portfolio-modal-title" class="text-2xl font-bold gradient-text pr-12" data-modal-title>Detail proyek</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 mb-4" data-modal-meta></p>
+        <div class="modal-tech-stack mb-4" data-modal-tech></div>
+        <div data-modal-body></div>
+        <div class="flex flex-wrap gap-3 mt-6" data-modal-actions></div>
+      </div>
+    </div>
+
+      <aside class="portfolio-cta-aside py-12 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30">
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Ada proyek serupa? Ceritakan konteks dan timeline — saya akan balas lewat formulir kontak.
+          </p>
+          <a
+            href="index.html#contact"
+            class="inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-opacity-90 transition-colors shadow-sm shrink-0"
+          >
+            Ajukan diskusi
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+      <div class="container mx-auto px-6 text-center text-sm">
+        <p>&copy; 2024 Danadipa Nugraha. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+
+    <script src="js/portfolio-projects.js"></script>
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const mobileDarkModeToggle = document.getElementById("mobileDarkModeToggle");
+
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", document.documentElement.classList.contains("dark"));
+      }
+
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+      mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode === "true") {
+        document.documentElement.classList.add("dark");
+      } else if (savedDarkMode === "false") {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.addEventListener("scroll", function () {
+        const el = document.getElementById("scrollProgress");
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        el.style.width = (scrollable > 0 ? (scrolled / scrollable) * 100 : 0) + "%";
+      });
+
+      document.querySelectorAll('button, a[href^="#"]').forEach(function (el) {
+        el.classList.add("btn-hover-effect");
+      });
+      document.querySelectorAll('a:not([href^="#"])').forEach(function (link) {
+        link.classList.add("link-hover-effect");
+      });
+
+      let lastScroll = 0;
+      const navbar = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          navbar.classList.remove("scroll-up");
+          return;
+        }
+        if (currentScroll > lastScroll && !navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-up");
+          navbar.classList.add("scroll-down");
+        } else if (currentScroll < lastScroll && navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-down");
+          navbar.classList.add("scroll-up");
+        }
+        lastScroll = currentScroll;
+      });
+
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenuClose = document.querySelector(".mobile-menu-close");
+      const navLinks = document.querySelector(".nav-links");
+      mobileMenuButton.addEventListener("click", function () {
+        navLinks.classList.add("active");
+      });
+      mobileMenuClose.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      var reduceMotion =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      window.addEventListener("load", function () {
+        if (typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.refresh();
+        }
+      });
+
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+        var dur = reduceMotion ? 0.35 : 0.8;
+        var durHead = reduceMotion ? 0.42 : 0.75;
+        var yIn = reduceMotion ? 14 : 50;
+        var ySm = reduceMotion ? 10 : 24;
+        var yHead = reduceMotion ? 12 : 32;
+        var delayChip = reduceMotion ? 0.03 : 0.08;
+        var delayCard = reduceMotion ? 0.04 : 0.1;
+
+        var headTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        headTl
+          .from(".page-breadcrumb", { opacity: 0, y: yHead, duration: durHead })
+          .from(".page-title", { opacity: 0, y: yHead, duration: durHead * 1.08 }, "-=0.48")
+          .from(".page-sub", { opacity: 0, y: ySm, duration: durHead * 0.95 }, "-=0.52")
+          .from(".page-meta", { opacity: 0, y: ySm, duration: durHead * 0.9 }, "-=0.5")
+          .from(
+            ".page-meta-line",
+            { scaleX: 0, opacity: 0, transformOrigin: "right center", duration: durHead * 0.72 },
+            "-=0.42"
+          );
+
+        gsap.utils.toArray(".portfolio-filters-section .portfolio-filter, .portfolio-filters-section .portfolio-year-filter").forEach(function (chip, i) {
+          gsap.from(chip, {
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".portfolio-filters-section",
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: ySm,
+            duration: reduceMotion ? 0.28 : 0.72,
+            ease: "power3.out",
+            delay: i * delayChip,
+          });
+        });
+
+        document.addEventListener("portfolio:rendered", function () {
+          gsap.utils.toArray("#portfolio-grid .project-item").forEach(function (card, i) {
+            gsap.from(card, {
+              immediateRender: false,
+              scrollTrigger: {
+                trigger: card,
+                start: "top 92%",
+                toggleActions: "play none none reverse",
+              },
+              duration: dur,
+              y: yIn,
+              opacity: 0,
+              ease: "power3.out",
+              delay: i * delayCard,
+            });
+          });
+          requestAnimationFrame(function () {
+            ScrollTrigger.refresh();
+          });
+        });
+
+        gsap.from(".portfolio-cta-aside > div", {
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ".portfolio-cta-aside",
+            start: "top 92%",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: reduceMotion ? 16 : 44,
+          duration: dur,
+          ease: "power3.out",
+        });
+
+        requestAnimationFrame(function () {
+          ScrollTrigger.refresh();
+        });
+      }
+    </script>
+  </body>
+</html>
+

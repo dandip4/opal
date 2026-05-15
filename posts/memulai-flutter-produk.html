@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Memulai Flutter untuk produk nyata — struktur folder, widget, state, dan rilis pertama."
+    />
+    <meta name="author" content="Danadipa Nugraha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://danadipa-nugraha.vercel.app/posts/memulai-flutter-produk.html" />
+    <meta property="og:title" content="Memulai Flutter untuk produk nyata | Blog" />
+    <meta
+      property="og:description"
+      content="Langkah praktis agar codebase Flutter tetap rapi saat fitur bertambah."
+    />
+    <meta property="og:url" content="https://danadipa-nugraha.vercel.app/posts/memulai-flutter-produk.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="id_ID" />
+    <title>Memulai Flutter untuk produk nyata | Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Space Grotesk", "sans-serif"] },
+            colors: {
+              primary: "#4B5563",
+              secondary: "#6B7280",
+              accent: "#9CA3AF",
+              dark: "#1F2937",
+              light: "#F3F4F6",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Memulai Flutter untuk produk nyata",
+        "datePublished": "2024-03-15",
+        "author": { "@type": "Person", "name": "Danadipa Nugraha" },
+        "url": "https://danadipa-nugraha.vercel.app/posts/memulai-flutter-produk.html"
+      }
+    </script>
+    <style>
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        z-index: 50;
+        width: 0%;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #bbc3ce 0%, #9699a0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-bg {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      }
+      .dark .section-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      }
+      .btn-hover-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+      .btn-hover-effect:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+      .link-hover-effect {
+        position: relative;
+      }
+      .link-hover-effect::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+      .link-hover-effect:hover::after {
+        width: 100%;
+      }
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        color: #4b5563;
+      }
+      .dark .nav-link {
+        color: #e5e7eb;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .dark .nav-link::after {
+        background: linear-gradient(to right, #e5e7eb, #9ca3af);
+      }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .dark .navbar-blur {
+        background: rgba(17, 24, 39, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .logo-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+      }
+      .dark .logo-text {
+        background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .mobile-menu-button {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-menu-button {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          transition: all 0.3s ease;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+        }
+        .dark .nav-links {
+          background: rgba(17, 24, 39, 0.95);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          color: #4b5563;
+        }
+        .dark .nav-links a {
+          color: #e5e7eb;
+        }
+      }
+      .scroll-down {
+        transform: translateY(-100%);
+      }
+      .scroll-up {
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav class="fixed w-full navbar-blur z-40 transition-transform duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="../index.html" class="text-2xl font-bold logo-text">DN</a>
+          <button
+            class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="../index.html#home" class="nav-link text-sm font-medium">Beranda</a>
+            <a href="../about.html" class="nav-link text-sm font-medium">Tentang</a>
+            <a href="../portfolio.html" class="nav-link text-sm font-medium">Portofolio</a>
+            <a href="../gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+            <a href="../blog.html" class="nav-link text-sm font-medium active">Blog</a>
+            <a href="../index.html#contact" class="nav-link text-sm font-medium">Kontak</a>
+            <button
+              id="darkModeToggle"
+              type="button"
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+              aria-label="Ganti mode gelap"
+            >
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-links md:hidden" id="mobile-menu" role="navigation" aria-label="Navigasi seluler">
+      <div class="flex justify-end mb-8">
+        <button
+          type="button"
+          class="mobile-menu-close p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <a href="../index.html#home" class="nav-link text-lg font-medium">Beranda</a>
+      <a href="../about.html" class="nav-link text-lg font-medium">Tentang</a>
+      <a href="../portfolio.html" class="nav-link text-lg font-medium">Portofolio</a>
+      <a href="../gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+      <a href="../blog.html" class="nav-link text-sm font-medium active">Blog</a>
+      <a href="../index.html#contact" class="nav-link text-lg font-medium">Kontak</a>
+      <div class="mt-8">
+        <button
+          id="mobileDarkModeToggle"
+          type="button"
+          class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+          aria-label="Ganti mode gelap"
+        >
+          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <article>
+        <header class="section-bg border-b border-gray-200/80 dark:border-gray-700/80 pt-28 pb-10 md:pb-12">
+          <div class="container mx-auto px-6 lg:px-10 max-w-4xl">
+            <nav
+              class="post-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-6"
+              aria-label="Breadcrumb"
+            >
+              <a href="../index.html" class="hover:text-primary dark:hover:text-gray-200 transition-colors">Beranda</a>
+              <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+              <a href="../blog.html" class="hover:text-primary dark:hover:text-gray-200 transition-colors">Blog</a>
+              <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+              <span class="text-gray-800 dark:text-gray-200 font-medium">Flutter</span>
+            </nav>
+            <p class="text-xs font-semibold uppercase tracking-wide text-primary dark:text-gray-400 mb-2">Mobile</p>
+            <h1 class="post-title text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-100 leading-tight">
+              Memulai Flutter untuk produk nyata
+            </h1>
+            <div class="post-meta mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <span>Oleh <strong class="font-medium text-gray-800 dark:text-gray-200">Danadipa Nugraha</strong></span>
+              <span aria-hidden="true">·</span>
+              <time datetime="2024-03-15">15 Maret 2024</time>
+              <span aria-hidden="true">·</span>
+              <span>± 8 menit baca</span>
+            </div>
+            <div class="post-tags mt-4 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Flutter</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Mobile</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="container mx-auto px-6 lg:px-10 max-w-3xl py-10 md:py-14">
+          <figure class="post-hero mb-10 rounded-2xl overflow-hidden ring-1 ring-gray-200/80 dark:ring-gray-700/80 shadow-lg">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=960&h=480&fit=crop"
+              alt="Ilustrasi pengembangan aplikasi"
+              class="w-full h-auto object-cover max-h-80"
+              width="960"
+              height="480"
+            />
+          </figure>
+
+          <div class="post-body space-y-6 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p class="text-lg text-gray-800 dark:text-gray-200 font-medium">
+              Flutter menarik karena satu codebase untuk iOS dan Android — tetapi tanpa struktur yang jelas, tim akan
+              kehabisan waktu merapikan ulang sebelum fitur besar kedua dirilis.
+            </p>
+            <p>
+              Artikel ini merangkum pola yang saya pakai saat memulai proyek Flutter: bagaimana membagi folder fitur,
+              kapan memecah widget, dan bagaimana menyiapkan uji minimal agar refactor tidak menakutkan.
+            </p>
+
+            <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 pt-4">Struktur folder yang masuk akal</h2>
+            <p>
+              Saya cenderung mengelompokkan berdasarkan <em>fitur</em> (auth, checkout, profil) lalu memakai subfolder
+              <code class="text-sm bg-gray-200/80 dark:bg-gray-800 px-1.5 py-0.5 rounded">widgets</code>,
+              <code class="text-sm bg-gray-200/80 dark:bg-gray-800 px-1.5 py-0.5 rounded">models</code>, dan
+              <code class="text-sm bg-gray-200/80 dark:bg-gray-800 px-1.5 py-0.5 rounded">services</code> di dalamnya.
+              Lapisan “core” untuk tema, routing, dan klien HTTP tetap terpisah agar tidak bercampur dengan UI bisnis.
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400">
+              <li>Hindari file raksasa satu layar — pecah menjadi widget privat kecil di file yang sama atau berdampingan.</li>
+              <li>Namai widget berdasarkan peran UI, bukan hanya “CustomWidget1”.</li>
+              <li>Simpan string yang akan diterjemahkan di satu modul agar lokalisasi tidak mengorbankan deadline.</li>
+            </ul>
+
+            <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 pt-4">State dan navigasi</h2>
+            <p>
+              Untuk produk kecil, kombinasi <strong>Navigator 2.0</strong> atau router pihak ketiga plus state lokal
+              sudah cukup — yang penting adalah kesepakatan tim: siapa yang memegang “sumber kebenaran” untuk alur
+              multi-langkah (wizard, onboarding).
+            </p>
+            <p>
+              Setelah rilis pertama, barulah pertimbangkan pola yang lebih berat (misalnya pemisahan domain dengan modul
+              internal) ketika ukuran tim dan fitur benar-benar memaksa.
+            </p>
+          </div>
+
+          <footer class="post-footer mt-14 pt-10 border-t border-gray-200 dark:border-gray-700">
+            <a
+              href="../blog.html"
+              class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Kembali ke daftar blog
+            </a>
+          </footer>
+        </div>
+      </article>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+      <div class="container mx-auto px-6 text-center text-sm">
+        <p>&copy; 2024 Danadipa Nugraha. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const mobileDarkModeToggle = document.getElementById("mobileDarkModeToggle");
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", document.documentElement.classList.contains("dark"));
+      }
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+      mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode === "true") document.documentElement.classList.add("dark");
+      else if (savedDarkMode === "false") document.documentElement.classList.remove("dark");
+
+      window.addEventListener("scroll", function () {
+        var el = document.getElementById("scrollProgress");
+        var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        el.style.width = (scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0) + "%";
+      });
+
+      document.querySelectorAll('button, a[href^="#"]').forEach(function (el) {
+        el.classList.add("btn-hover-effect");
+      });
+      document.querySelectorAll('a:not([href^="#"])').forEach(function (link) {
+        link.classList.add("link-hover-effect");
+      });
+
+      var mobileMenuButton = document.querySelector(".mobile-menu-button");
+      var mobileMenuClose = document.querySelector(".mobile-menu-close");
+      var navLinks = document.querySelector(".nav-links");
+      mobileMenuButton.addEventListener("click", function () {
+        navLinks.classList.add("active");
+      });
+      mobileMenuClose.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      var lastScroll = 0;
+      var navbar = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        var currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          navbar.classList.remove("scroll-up");
+          return;
+        }
+        if (currentScroll > lastScroll && !navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-up");
+          navbar.classList.add("scroll-down");
+        } else if (currentScroll < lastScroll && navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-down");
+          navbar.classList.add("scroll-up");
+        }
+        lastScroll = currentScroll;
+      });
+
+      var reduceMotion =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduceMotion && typeof gsap !== "undefined") {
+        var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".post-breadcrumb", { opacity: 0, y: 14, duration: 0.55 })
+          .from(".post-title", { opacity: 0, y: 28, duration: 0.7 }, "-=0.35")
+          .from(".post-meta", { opacity: 0, y: 12, duration: 0.5 }, "-=0.4")
+          .from(".post-tags span", { opacity: 0, y: 8, duration: 0.4, stagger: 0.06 }, "-=0.35")
+          .from(".post-hero", { opacity: 0, y: 20, duration: 0.65 }, "-=0.3")
+          .from(".post-body > *", { opacity: 0, y: 16, duration: 0.5, stagger: 0.05 }, "-=0.25");
+      }
+    </script>
+  </body>
+</html>

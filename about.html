@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Profil Danadipa Nugraha — Full Stack Developer Sukabumi: tentang saya, pengalaman freelance & PUTIK, pendidikan, dan keahlian teknis."
+    />
+    <meta name="author" content="Danadipa Nugraha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://danadipa-nugraha.vercel.app/about.html" />
+    <meta property="og:title" content="Tentang | Danadipa Nugraha" />
+    <meta
+      property="og:description"
+      content="Ringkasan profil, pengalaman, dan cara kerja sebagai developer."
+    />
+    <meta property="og:url" content="https://danadipa-nugraha.vercel.app/about.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <title>Tentang | Danadipa Nugraha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              primary: "#4B5563",
+              secondary: "#6B7280",
+              accent: "#9CA3AF",
+              dark: "#1F2937",
+              light: "#F3F4F6",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "Tentang Danadipa Nugraha",
+        "url": "https://danadipa-nugraha.vercel.app/about.html",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Danadipa Nugraha",
+          "jobTitle": "Full Stack Developer",
+          "url": "https://danadipa-nugraha.vercel.app",
+          "email": "danadipa.n@gmail.com",
+          "telephone": "+62-895-0255-8010"
+        }
+      }
+    </script>
+    <style>
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        z-index: 50;
+        width: 0%;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #bbc3ce 0%, #9699a0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-bg {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      }
+      .dark .section-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      }
+      .btn-hover-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+      .btn-hover-effect:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+      .link-hover-effect {
+        position: relative;
+      }
+      .link-hover-effect::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+      .link-hover-effect:hover::after {
+        width: 100%;
+      }
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .tech-badge {
+        padding: 0.35rem 0.75rem;
+        background: rgba(75, 85, 99, 0.1);
+        border-radius: 9999px;
+        font-size: 0.8125rem;
+        color: #4b5563;
+      }
+      .dark .tech-badge {
+        background: rgba(75, 85, 99, 0.25);
+        color: #e5e7eb;
+      }
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        color: #4b5563;
+      }
+      .dark .nav-link {
+        color: #e5e7eb;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .dark .nav-link::after {
+        background: linear-gradient(to right, #e5e7eb, #9ca3af);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .dark .navbar-blur {
+        background: rgba(17, 24, 39, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .logo-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .dark .logo-text {
+        background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .mobile-menu-button {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-menu-button {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          transition: all 0.3s ease;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .nav-links {
+          background: rgba(17, 24, 39, 0.95);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          color: #4b5563;
+        }
+        .dark .nav-links a {
+          color: #e5e7eb;
+        }
+      }
+      .scroll-down {
+        transform: translateY(-100%);
+      }
+      .scroll-up {
+        transform: translateY(0);
+      }
+      .about-timeline {
+        border-left: 2px solid rgba(75, 85, 99, 0.25);
+      }
+      .dark .about-timeline {
+        border-left-color: rgba(156, 163, 175, 0.35);
+      }
+      .about-timeline-item {
+        position: relative;
+        padding-left: 1.5rem;
+        padding-bottom: 2rem;
+      }
+      .about-timeline-item:last-child {
+        padding-bottom: 0;
+      }
+      .about-timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 0.35rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #4b5563;
+        border: 2px solid #f9fafb;
+      }
+      .dark .about-timeline-item::before {
+        background: #9ca3af;
+        border-color: #111827;
+      }
+      .about-jump-nav {
+        position: sticky;
+        top: 4.25rem;
+        z-index: 30;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.95);
+        background: rgba(249, 250, 251, 0.88);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .dark .about-jump-nav {
+        border-bottom-color: rgba(55, 65, 81, 0.9);
+        background: rgba(17, 24, 39, 0.88);
+      }
+      .about-jump-nav a {
+        color: #6b7280;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        padding: 0.65rem 0;
+        transition: color 0.2s ease;
+      }
+      .dark .about-jump-nav a {
+        color: #9ca3af;
+      }
+      .about-jump-nav a:hover {
+        color: #4b5563;
+      }
+      .dark .about-jump-nav a:hover {
+        color: #e5e7eb;
+      }
+      .about-profile-figure {
+        margin: 0;
+      }
+      .about-avatar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 280px;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid rgba(209, 213, 219, 0.95);
+        background: linear-gradient(
+          160deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(243, 244, 246, 0.98) 45%,
+          rgba(229, 231, 235, 0.85) 100%
+        );
+        box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.35);
+      }
+      .dark .about-avatar {
+        border-color: rgba(75, 85, 99, 0.6);
+        background: linear-gradient(
+          160deg,
+          rgba(31, 41, 55, 0.95) 0%,
+          rgba(17, 24, 39, 0.98) 50%,
+          rgba(3, 7, 18, 0.92) 100%
+        );
+        box-shadow: 0 20px 50px -28px rgba(0, 0, 0, 0.65);
+      }
+      .about-value-card {
+        border-radius: 0.75rem;
+        border: 1px solid rgba(229, 231, 235, 0.95);
+        background: rgba(255, 255, 255, 0.65);
+        padding: 1.1rem 1.15rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      .dark .about-value-card {
+        border-color: rgba(55, 65, 81, 0.85);
+        background: rgba(31, 41, 55, 0.45);
+      }
+      .about-value-card:hover {
+        border-color: rgba(75, 85, 99, 0.35);
+        box-shadow: 0 12px 28px -18px rgba(15, 23, 42, 0.25);
+      }
+      .dark .about-value-card:hover {
+        border-color: rgba(156, 163, 175, 0.35);
+      }
+      .about-step-num {
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        background: rgba(75, 85, 99, 0.12);
+        color: #4b5563;
+      }
+      .dark .about-step-num {
+        background: rgba(156, 163, 175, 0.15);
+        color: #e5e7eb;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav class="fixed w-full navbar-blur z-40 transition-transform duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-2xl font-bold logo-text">DN</a>
+          <button
+            class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html#home" class="nav-link text-sm font-medium">Beranda</a>
+            <a href="about.html" class="nav-link text-sm font-medium active">Tentang</a>
+            <a href="portfolio.html" class="nav-link text-sm font-medium">Portofolio</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+            <a href="blog.html" class="nav-link text-sm font-medium">Blog</a>
+            <a href="index.html#contact" class="nav-link text-sm font-medium">Kontak</a>
+            <button
+              id="darkModeToggle"
+              type="button"
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+              aria-label="Ganti mode gelap"
+            >
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-links md:hidden" id="mobile-menu" role="navigation" aria-label="Navigasi seluler">
+      <div class="flex justify-end mb-8">
+        <button
+          type="button"
+          class="mobile-menu-close p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <a href="index.html#home" class="nav-link text-lg font-medium">Beranda</a>
+      <a href="about.html" class="nav-link text-lg font-medium active">Tentang</a>
+      <a href="portfolio.html" class="nav-link text-lg font-medium">Portofolio</a>
+      <a href="gallery.html" class="nav-link text-sm font-medium">Galeri</a>
+      <a href="blog.html" class="nav-link text-sm font-medium">Blog</a>
+      <a href="index.html#contact" class="nav-link text-lg font-medium">Kontak</a>
+      <div class="mt-8">
+        <button
+          id="mobileDarkModeToggle"
+          type="button"
+          class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+          aria-label="Ganti mode gelap"
+        >
+          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <main id="main-content">
+      <header
+        class="section-bg border-b border-gray-200/80 dark:border-gray-700/80 pt-28 pb-10 md:pb-14 relative overflow-hidden"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 opacity-[0.22] dark:opacity-[0.12] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjAyIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzk0LTQtNHMtNC0xLjc5LTQgNCAxLjc5IDQgNCA0LTEuNzk0eiIvPjwvZz48L2c+PC9zdmc+')]"
+        ></div>
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl relative z-10">
+          <div class="max-w-3xl">
+            <nav
+              class="page-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-5"
+              aria-label="Breadcrumb"
+            >
+              <a href="index.html" class="hover:text-primary dark:hover:text-gray-200 transition-colors">Beranda</a>
+              <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+              <span class="text-gray-800 dark:text-gray-200 font-medium">Tentang</span>
+            </nav>
+            <h1
+              class="page-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4 leading-[1.08]"
+            >
+              <span class="gradient-text">Tentang</span>
+            </h1>
+            <p class="page-sub text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              <span class="font-semibold text-gray-900 dark:text-gray-100">Danadipa Nugraha</span>
+              <span class="text-gray-500 dark:text-gray-500" aria-hidden="true"> · </span>
+              Full Stack Developer · Sukabumi, Jawa Barat
+            </p>
+          </div>
+          <dl
+            class="page-stats mt-8 md:mt-10 flex flex-wrap gap-3 text-sm max-w-4xl"
+          >
+            <div
+              class="stat-chip rounded-xl bg-white/85 dark:bg-gray-800/85 px-4 py-3 border border-gray-200/90 dark:border-gray-600/80 shadow-sm min-w-[10.5rem] flex-1 sm:flex-none"
+            >
+              <dt class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Pengalaman</dt>
+              <dd class="font-semibold text-gray-900 dark:text-gray-100 mt-0.5 text-base">2022 – sekarang</dd>
+            </div>
+            <div
+              class="stat-chip rounded-xl bg-white/85 dark:bg-gray-800/85 px-4 py-3 border border-gray-200/90 dark:border-gray-600/80 shadow-sm min-w-[10.5rem] flex-1 sm:flex-none"
+            >
+              <dt class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Fokus</dt>
+              <dd class="font-semibold text-gray-900 dark:text-gray-100 mt-0.5 text-base">Web &amp; sistem informasi</dd>
+            </div>
+            <div
+              class="stat-chip rounded-xl bg-white/85 dark:bg-gray-800/85 px-4 py-3 border border-gray-200/90 dark:border-gray-600/80 shadow-sm min-w-[10.5rem] flex-1 sm:flex-none"
+            >
+              <dt class="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wide">Pendidikan</dt>
+              <dd class="font-semibold text-gray-900 dark:text-gray-100 mt-0.5 text-base">Universitas Pakuan</dd>
+            </div>
+          </dl>
+        </div>
+      </header>
+
+      <nav class="about-jump-nav hidden md:block" aria-label="Lompat ke bagian halaman">
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl flex flex-wrap gap-x-8 gap-y-0">
+          <a href="#perkenalan">Perkenalan</a>
+          <a href="#pengalaman">Pengalaman</a>
+          <a href="#pendidikan">Pendidikan</a>
+          <a href="#teknologi">Teknologi</a>
+          <a href="#kontak-about">Kontak</a>
+        </div>
+      </nav>
+
+      <section
+        id="perkenalan"
+        class="about-animate scroll-mt-28 py-14 md:py-20 border-b border-gray-200/80 dark:border-gray-800/80"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+            <div class="lg:col-span-4 lg:sticky lg:top-36 self-start">
+              <figure class="about-profile-figure">
+                <div class="about-avatar px-6 py-10" aria-label="Placeholder foto profil">
+                  <span class="text-5xl sm:text-6xl font-bold gradient-text tracking-tight">DN</span>
+                  <p class="mt-4 text-xs text-gray-500 dark:text-gray-400 max-w-[200px] leading-relaxed">
+                    Tambahkan foto profesional dengan tag <code class="text-[11px] bg-gray-200/80 dark:bg-gray-700/80 px-1 rounded">&lt;img&gt;</code> di dalam blok ini agar halaman terasa lebih personal.
+                  </p>
+                </div>
+              </figure>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <a
+                  href="mailto:danadipa.n@gmail.com"
+                  class="inline-flex items-center px-3.5 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  Email
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/danadipa-nugraha"
+                  class="inline-flex items-center px-3.5 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/dandip4"
+                  class="inline-flex items-center px-3.5 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="tel:+6289502558010"
+                  class="inline-flex items-center px-3.5 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-xs font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  Telepon
+                </a>
+              </div>
+              <p class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+                Sukabumi, Jawa Barat · danadipa.n@gmail.com · 0895-0255-8010
+              </p>
+            </div>
+            <div class="lg:col-span-8 space-y-10">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-primary dark:text-gray-400 mb-2">
+                  Perkenalan
+                </p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight mb-5">
+                  Ringkasan singkat, lalu ke intinya
+                </h2>
+                <div class="space-y-4 text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
+                  <p class="text-gray-700 dark:text-gray-300 font-medium">
+                    Saya adalah Full Stack Developer dengan latar belakang ilmu komputer dan pengalaman mengembangkan
+                    berbagai aplikasi web maupun sistem informasi.
+                  </p>
+                  <p>
+                    Memiliki ketertarikan besar pada pengembangan teknologi, pemecahan masalah, dan eksplorasi bidang IT
+                    lainnya. Terbiasa bekerja secara individu maupun kolaboratif dalam tim untuk menghasilkan solusi
+                    digital yang efektif dan sesuai kebutuhan.
+                  </p>
+                  <p>
+                    Sehari-hari saya menangani company profile, sistem informasi internal, aplikasi manajemen, hingga
+                    pengembangan fitur dan maintenance—dari pemahaman kebutuhan bisnis hingga implementasi di Laravel,
+                    JavaScript, Flutter, dan stack pendukung lainnya.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Keahlian personal</h3>
+                <div class="grid sm:grid-cols-3 gap-3">
+                  <div class="about-value-card">
+                    <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">Komunikasi &amp; kolaborasi</p>
+                    <p class="mt-1.5 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Terbiasa berkoordinasi dengan klien dan tim lintas peran.
+                    </p>
+                  </div>
+                  <div class="about-value-card">
+                    <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">Perencanaan proyek</p>
+                    <p class="mt-1.5 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Memetakan scope, prioritas, dan estimasi pekerjaan secara realistis.
+                    </p>
+                  </div>
+                  <div class="about-value-card">
+                    <p class="text-sm font-semibold text-gray-900 dark:text-gray-100">Analisis sistem</p>
+                    <p class="mt-1.5 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Memahami kebutuhan bisnis sebelum menerjemahkannya ke solusi teknis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">Fokus kerja</h3>
+                <div class="grid md:grid-cols-3 gap-3">
+                  <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/40 p-4">
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Website &amp; company profile</p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Landing page, portal organisasi, dan situs institusi yang responsif.
+                    </p>
+                  </div>
+                  <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/40 p-4">
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Sistem informasi</p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Modul internal, manajemen data, dan alur operasional kantor atau kampus.
+                    </p>
+                  </div>
+                  <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/80 dark:bg-gray-800/40 p-4">
+                    <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Web &amp; mobile app</p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                      Aplikasi berbasis Laravel, React/Next.js, Flutter, dan Node.js sesuai kebutuhan proyek.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="pengalaman"
+        class="about-animate scroll-mt-28 py-14 border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/40"
+        aria-labelledby="heading-pengalaman"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-5xl">
+          <h2 id="heading-pengalaman" class="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+            Pengalaman profesional
+          </h2>
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 max-w-2xl">
+            Garis besar peran dan dampak—detail proyek ada di portofolio.
+          </p>
+          <div class="about-timeline ml-1 mt-10">
+            <div class="about-timeline-item">
+              <p class="text-xs font-medium uppercase tracking-wide text-primary dark:text-gray-400">2023 — sekarang</p>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100 mt-1">Freelance Full Stack Developer</h3>
+              <p class="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                Bekerja pada berbagai proyek freelance: website company profile, sistem informasi, aplikasi manajemen,
+                pengembangan fitur, dan maintenance sistem. Berkolaborasi dengan klien maupun tim untuk memahami kebutuhan
+                bisnis dan menerjemahkannya menjadi solusi digital yang efisien.
+              </p>
+            </div>
+            <div class="about-timeline-item">
+              <p class="text-xs font-medium uppercase tracking-wide text-primary dark:text-gray-400">Juli 2022 — Jan 2023</p>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100 mt-1">Full Stack Developer Intern</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                Pusat Teknologi Informasi dan Komunikasi (PUTIK) — Universitas Pakuan, Bogor
+              </p>
+              <p class="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                Terlibat dalam pengembangan dan maintenance sistem internal universitas, termasuk modul sistem informasi,
+                implementasi fitur website, dan pengelolaan aplikasi berbasis web.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="pendidikan"
+        class="about-animate scroll-mt-28 py-14 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/40"
+        aria-labelledby="heading-pendidikan"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-5xl">
+          <h2 id="heading-pendidikan" class="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+            Pendidikan
+          </h2>
+          <div class="about-timeline ml-1 mt-10">
+            <div class="about-timeline-item">
+              <p class="text-xs font-medium uppercase tracking-wide text-primary dark:text-gray-400">2023 — sekarang</p>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100 mt-1">Sarjana Ilmu Komputer</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Universitas Pakuan</p>
+            </div>
+            <div class="about-timeline-item">
+              <p class="text-xs font-medium uppercase tracking-wide text-primary dark:text-gray-400">2020 — 2023</p>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100 mt-1">Rekayasa Perangkat Lunak</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5">SMK Wikrama Bogor</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="teknologi"
+        class="about-animate scroll-mt-28 py-14 md:py-16"
+        aria-labelledby="heading-teknologi"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-5xl">
+          <h2 id="heading-teknologi" class="text-xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
+            Keahlian teknis &amp; tools
+          </h2>
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 mb-8 max-w-2xl">
+            Stack utama dari CV — disesuaikan per proyek di lapangan.
+          </p>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Teknis</h3>
+              <div class="tech-stack">
+                <span class="tech-badge">HTML / CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">PHP</span>
+                <span class="tech-badge">Laravel</span>
+                <span class="tech-badge">Flutter</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Express.js</span>
+                <span class="tech-badge">Next.js</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">Bootstrap</span>
+                <span class="tech-badge">Tailwind CSS</span>
+                <span class="tech-badge">C++</span>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">Tools</h3>
+              <div class="tech-stack">
+                <span class="tech-badge">GitHub</span>
+                <span class="tech-badge">Laragon</span>
+                <span class="tech-badge">Postman</span>
+                <span class="tech-badge">Visual Studio Code</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside
+        id="kontak-about"
+        class="about-animate scroll-mt-28 py-12 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30"
+      >
+        <div
+          class="container mx-auto px-6 lg:px-10 max-w-7xl flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
+        >
+          <div>
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Siap diskusi</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1 max-w-lg">
+              Lihat studi kasus di portofolio, lalu kirim konteks singkat lewat formulir—saya akan membalas dengan
+              langkah berikutnya yang realistis.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 shrink-0">
+            <a
+              href="portfolio.html"
+              class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              Lihat portofolio
+            </a>
+            <a
+              href="index.html#contact"
+              class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-opacity-90 transition-colors shadow-sm"
+            >
+              Kirim pesan
+            </a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+      <div class="container mx-auto px-6 text-center text-sm">
+        <p>&copy; 2024 Danadipa Nugraha. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const mobileDarkModeToggle = document.getElementById("mobileDarkModeToggle");
+
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("darkMode", isDark);
+      }
+
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+      mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode === "true") {
+        document.documentElement.classList.add("dark");
+      } else if (savedDarkMode === "false") {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.addEventListener("scroll", function () {
+        const scrollProgress = document.getElementById("scrollProgress");
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const progress = scrollable > 0 ? (scrolled / scrollable) * 100 : 0;
+        scrollProgress.style.width = progress + "%";
+      });
+
+      document.querySelectorAll('button, a[href^="#"]').forEach(function (el) {
+        el.classList.add("btn-hover-effect");
+      });
+      document.querySelectorAll('a:not([href^="#"])').forEach(function (link) {
+        link.classList.add("link-hover-effect");
+      });
+
+      let lastScroll = 0;
+      const navbar = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          navbar.classList.remove("scroll-up");
+          return;
+        }
+        if (currentScroll > lastScroll && !navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-up");
+          navbar.classList.add("scroll-down");
+        } else if (currentScroll < lastScroll && navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-down");
+          navbar.classList.add("scroll-up");
+        }
+        lastScroll = currentScroll;
+      });
+
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenuClose = document.querySelector(".mobile-menu-close");
+      const navLinks = document.querySelector(".nav-links");
+      mobileMenuButton.addEventListener("click", function () {
+        navLinks.classList.add("active");
+      });
+      mobileMenuClose.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      var reduceMotion =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      window.addEventListener("load", function () {
+        if (typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.refresh();
+        }
+      });
+
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+        var dH = reduceMotion ? 0.35 : 0.55;
+        var dB = reduceMotion ? 0.35 : 0.7;
+        var yB = reduceMotion ? 14 : 36;
+        var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".page-breadcrumb", { opacity: 0, x: reduceMotion ? -8 : -18, duration: dH })
+          .from(".page-title", { opacity: 0, y: reduceMotion ? 16 : 36, duration: dH * 1.25 }, "-=0.35")
+          .from(".page-sub", { opacity: 0, y: reduceMotion ? 12 : 22, duration: dH * 1.05 }, "-=0.45")
+          .from(
+            ".stat-chip",
+            {
+              opacity: 0,
+              y: reduceMotion ? 8 : 20,
+              duration: reduceMotion ? 0.28 : 0.5,
+              stagger: reduceMotion ? 0.04 : 0.1,
+              ease: reduceMotion ? "power2.out" : "back.out(1.25)",
+            },
+            "-=0.35"
+          );
+
+        gsap.utils.toArray(".about-animate").forEach(function (block) {
+          gsap.from(block, {
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: block,
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: yB,
+            duration: dB,
+            ease: "power3.out",
+          });
+        });
+
+        requestAnimationFrame(function () {
+          ScrollTrigger.refresh();
+        });
+      }
+    </script>
+  </body>
+</html>

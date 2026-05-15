@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Galeri visual proyek web, mobile, dan desain — Danadipa Nugraha, Full Stack & Mobile Developer."
+    />
+    <meta name="author" content="Danadipa Nugraha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://danadipa-nugraha.vercel.app/gallery.html" />
+    <meta property="og:title" content="Galeri | Danadipa Nugraha" />
+    <meta
+      property="og:description"
+      content="Cuplikan antarmuka dan karya visual dari berbagai proyek digital."
+    />
+    <meta property="og:url" content="https://danadipa-nugraha.vercel.app/gallery.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <title>Galeri | Danadipa Nugraha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Space Grotesk", "sans-serif"],
+            },
+            colors: {
+              primary: "#4B5563",
+              secondary: "#6B7280",
+              accent: "#9CA3AF",
+              dark: "#1F2937",
+              light: "#F3F4F6",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Galeri proyek Danadipa Nugraha",
+        "url": "https://danadipa-nugraha.vercel.app/gallery.html",
+        "description": "Kumpulan cuplikan visual proyek web, mobile, dan desain.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Danadipa Nugraha Portfolio",
+          "url": "https://danadipa-nugraha.vercel.app"
+        }
+      }
+    </script>
+    <style>
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        z-index: 50;
+        width: 0%;
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #bbc3ce 0%, #9699a0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .section-bg {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      }
+      .dark .section-bg {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      }
+      .btn-hover-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-hover-effect::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+      .btn-hover-effect:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+      .link-hover-effect {
+        position: relative;
+      }
+      .link-hover-effect::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s ease;
+      }
+      .link-hover-effect:hover::after {
+        width: 100%;
+      }
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        color: #4b5563;
+      }
+      .dark .nav-link {
+        color: #e5e7eb;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, #4b5563, #6b7280);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+      .dark .nav-link::after {
+        background: linear-gradient(to right, #e5e7eb, #9ca3af);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .dark .navbar-blur {
+        background: rgba(17, 24, 39, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .logo-text {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .dark .logo-text {
+        background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .mobile-menu-button {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-menu-button {
+          display: block;
+        }
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          transition: all 0.3s ease;
+          z-index: 50;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .nav-links {
+          background: rgba(17, 24, 39, 0.95);
+        }
+        .nav-links.active {
+          right: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1.2rem;
+          color: #4b5563;
+        }
+        .dark .nav-links a {
+          color: #e5e7eb;
+        }
+      }
+      .scroll-down {
+        transform: translateY(-100%);
+      }
+      .scroll-up {
+        transform: translateY(0);
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+      }
+      .card-hover-effect {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      .dark .card-hover-effect:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <nav class="fixed w-full navbar-blur z-40 transition-transform duration-300">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-2xl font-bold logo-text">DN</a>
+          <button
+            class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+            type="button"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html#home" class="nav-link text-sm font-medium">Beranda</a>
+            <a href="about.html" class="nav-link text-sm font-medium">Tentang</a>
+            <a href="portfolio.html" class="nav-link text-sm font-medium">Portofolio</a>
+            <a href="gallery.html" class="nav-link text-sm font-medium active">Galeri</a>
+            <a href="blog.html" class="nav-link text-sm font-medium">Blog</a>
+            <a href="index.html#contact" class="nav-link text-sm font-medium">Kontak</a>
+            <button
+              id="darkModeToggle"
+              type="button"
+              class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+              aria-label="Ganti mode gelap"
+            >
+              <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+              <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-links md:hidden" id="mobile-menu" role="navigation" aria-label="Navigasi seluler">
+      <div class="flex justify-end mb-8">
+        <button
+          type="button"
+          class="mobile-menu-close p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <a href="index.html#home" class="nav-link text-lg font-medium">Beranda</a>
+      <a href="about.html" class="nav-link text-lg font-medium">Tentang</a>
+      <a href="portfolio.html" class="nav-link text-lg font-medium">Portofolio</a>
+      <a href="gallery.html" class="nav-link text-lg font-medium active">Galeri</a>
+      <a href="blog.html" class="nav-link text-sm font-medium">Blog</a>
+      <a href="index.html#contact" class="nav-link text-lg font-medium">Kontak</a>
+      <div class="mt-8">
+        <button
+          id="mobileDarkModeToggle"
+          type="button"
+          class="p-3 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 focus:outline-none focus:ring focus:ring-blue-300 transition-colors"
+          aria-label="Ganti mode gelap"
+        >
+          <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+          <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <header
+        class="section-bg border-b border-gray-200/80 dark:border-gray-700/80 pt-28 pb-10 md:pb-14 relative overflow-hidden"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 opacity-[0.22] dark:opacity-[0.12] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAiIGZpbGwtb3BhY2l0eT0iLjAyIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzk0LTQtNHMtNC0xLjc5LTQgNCAxLjc5IDQgNCA0LTEuNzk0eiIvPjwvZz48L2c+PC9zdmc+')]"
+        ></div>
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl relative z-10">
+          <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div class="lg:col-span-8 text-left">
+              <nav
+                class="page-breadcrumb text-sm text-gray-500 dark:text-gray-400 mb-5"
+                aria-label="Breadcrumb"
+              >
+                <a href="index.html" class="hover:text-primary dark:hover:text-gray-200 transition-colors">Beranda</a>
+                <span class="mx-2 text-gray-400" aria-hidden="true">/</span>
+                <span class="text-gray-800 dark:text-gray-200 font-medium">Galeri</span>
+              </nav>
+              <h1
+                class="page-title text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-gray-100 mb-4 leading-[1.08]"
+              >
+                <span class="gradient-text">Galeri visual</span>
+              </h1>
+              <p class="page-sub text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
+                Cuplikan antarmuka dari proyek web, aplikasi mobile, dan eksplorasi desain — filter membantu menelusuri
+                kategori.
+              </p>
+            </div>
+            <div class="lg:col-span-4 lg:text-right lg:pt-2 space-y-3">
+              <p class="page-meta text-sm text-gray-500 dark:text-gray-400 lg:ml-auto lg:max-w-xs">
+                Ingin konteks teknis lengkap? Buka halaman portofolio untuk studi kasus dan stack.
+              </p>
+              <div
+                class="page-meta-line hidden lg:block h-px w-24 bg-gradient-to-l from-primary/50 to-transparent ml-auto"
+                aria-hidden="true"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section
+        class="gallery-filters-section py-10 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50"
+        aria-label="Filter galeri"
+      >
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Kategori galeri">
+            <button
+              type="button"
+              class="gallery-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-primary text-white"
+              data-filter="all"
+            >
+              Semua
+            </button>
+            <button
+              type="button"
+              class="gallery-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-filter="web"
+            >
+              Web
+            </button>
+            <button
+              type="button"
+              class="gallery-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-filter="mobile"
+            >
+              Mobile
+            </button>
+            <button
+              type="button"
+              class="gallery-filter px-4 py-2 rounded-full text-sm font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              data-filter="design"
+            >
+              Desain
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-14 md:py-16 bg-gray-50 dark:bg-gray-900" aria-labelledby="heading-gallery-grid">
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl">
+          <h2 id="heading-gallery-grid" class="sr-only">Kisi galeri</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-page-grid">
+            <div class="gallery-item card-hover group" data-category="web">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                  alt="Platform e-commerce — cuplikan antarmuka"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Platform e-commerce</h3>
+                    <p class="text-sm text-gray-200 mb-4">Dasbor katalog dan checkout modern</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">React</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Node.js</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="mobile">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop"
+                  alt="Aplikasi fitness — cuplikan mobile"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Aplikasi fitness</h3>
+                    <p class="text-sm text-gray-200 mb-4">Lintas platform dengan Flutter</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Flutter</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Firebase</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="design">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop"
+                  alt="Sistem desain dashboard"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">UI/UX dashboard</h3>
+                    <p class="text-sm text-gray-200 mb-4">Komponen dan hierarki visual</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Figma</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Design system</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="web">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                  alt="Manajemen tugas — tampilan web"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Manajemen tugas</h3>
+                    <p class="text-sm text-gray-200 mb-4">Kolaborasi tim real-time</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Vue</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Django</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="mobile">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop"
+                  alt="Pesan makanan — aplikasi mobile"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Pesan makanan</h3>
+                    <p class="text-sm text-gray-200 mb-4">Alur pesan dan pelacakan</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Flutter</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Node.js</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="design">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop"
+                  alt="Identitas merek"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Identitas merek</h3>
+                    <p class="text-sm text-gray-200 mb-4">Palet, tipografi, dan pedoman</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Illustrator</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Photoshop</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="web">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop"
+                  alt="Ruang kerja analitik"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Analitik bisnis</h3>
+                    <p class="text-sm text-gray-200 mb-4">Kartu KPI dan filter multi-tenant</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Next.js</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">PostgreSQL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="mobile">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=600&h=400&fit=crop"
+                  alt="Aplikasi produktivitas"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Produktivitas harian</h3>
+                    <p class="text-sm text-gray-200 mb-4">Widget ringkas dan notifikasi</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Flutter</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">REST</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-item card-hover group" data-category="design">
+              <div class="relative overflow-hidden rounded-2xl shadow-md ring-1 ring-gray-200/80 dark:ring-gray-700/80">
+                <img
+                  src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop"
+                  alt="Wireframe dan prototipe"
+                  class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Wireframe &amp; prototipe</h3>
+                    <p class="text-sm text-gray-200 mb-4">Alur pengujian cepat dengan stakeholder</p>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Figma</span>
+                      <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Prototipe</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="gallery-cta-aside py-12 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30">
+        <div class="container mx-auto px-6 lg:px-10 max-w-7xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <p class="text-sm text-gray-600 dark:text-gray-400 max-w-xl">
+            Butuh detail implementasi? Lihat halaman portofolio atau hubungi lewat formulir kontak di beranda.
+          </p>
+          <div class="flex flex-wrap gap-3 shrink-0">
+            <a
+              href="portfolio.html"
+              class="inline-flex justify-center items-center px-5 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              Portofolio
+            </a>
+            <a
+              href="index.html#contact"
+              class="inline-flex justify-center items-center px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-medium hover:bg-opacity-90 transition-colors shadow-sm"
+            >
+              Kontak
+            </a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+      <div class="container mx-auto px-6 text-center text-sm">
+        <p>&copy; 2024 Danadipa Nugraha. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+
+    <script>
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const mobileDarkModeToggle = document.getElementById("mobileDarkModeToggle");
+
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem("darkMode", document.documentElement.classList.contains("dark"));
+      }
+
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+      mobileDarkModeToggle.addEventListener("click", toggleDarkMode);
+
+      const savedDarkMode = localStorage.getItem("darkMode");
+      if (savedDarkMode === "true") {
+        document.documentElement.classList.add("dark");
+      } else if (savedDarkMode === "false") {
+        document.documentElement.classList.remove("dark");
+      }
+
+      window.addEventListener("scroll", function () {
+        const el = document.getElementById("scrollProgress");
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        el.style.width = (scrollable > 0 ? (scrolled / scrollable) * 100 : 0) + "%";
+      });
+
+      document.querySelectorAll('button, a[href^="#"]').forEach(function (el) {
+        el.classList.add("btn-hover-effect");
+      });
+      document.querySelectorAll('a:not([href^="#"])').forEach(function (link) {
+        link.classList.add("link-hover-effect");
+      });
+
+      document.querySelectorAll(".gallery-item").forEach(function (el) {
+        el.classList.add("card-hover-effect");
+      });
+
+      let lastScroll = 0;
+      const navbar = document.querySelector("nav");
+      window.addEventListener("scroll", function () {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          navbar.classList.remove("scroll-up");
+          return;
+        }
+        if (currentScroll > lastScroll && !navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-up");
+          navbar.classList.add("scroll-down");
+        } else if (currentScroll < lastScroll && navbar.classList.contains("scroll-down")) {
+          navbar.classList.remove("scroll-down");
+          navbar.classList.add("scroll-up");
+        }
+        lastScroll = currentScroll;
+      });
+
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenuClose = document.querySelector(".mobile-menu-close");
+      const navLinks = document.querySelector(".nav-links");
+      mobileMenuButton.addEventListener("click", function () {
+        navLinks.classList.add("active");
+      });
+      mobileMenuClose.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navLinks.classList.remove("active");
+        });
+      });
+
+      document.querySelectorAll(".gallery-filter").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var filter = btn.getAttribute("data-filter");
+          document.querySelectorAll(".gallery-filter").forEach(function (b) {
+            b.classList.remove("bg-primary", "text-white");
+            b.classList.add("bg-gray-200", "dark:bg-gray-700", "text-gray-800", "dark:text-gray-200");
+          });
+          btn.classList.add("bg-primary", "text-white");
+          btn.classList.remove("bg-gray-200", "dark:bg-gray-700", "text-gray-800", "dark:text-gray-200");
+
+          document.querySelectorAll(".gallery-item").forEach(function (item) {
+            var cat = item.getAttribute("data-category");
+            var show = filter === "all" || cat === filter;
+            item.style.display = show ? "" : "none";
+          });
+
+          var reduceFilter =
+            typeof window.matchMedia === "function" &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (!reduceFilter && typeof gsap !== "undefined") {
+            requestAnimationFrame(function () {
+              if (typeof ScrollTrigger !== "undefined") {
+                ScrollTrigger.refresh();
+              }
+              var visible = Array.prototype.filter.call(document.querySelectorAll(".gallery-item"), function (node) {
+                var c = node.getAttribute("data-category");
+                return filter === "all" || c === filter;
+              });
+              gsap.from(visible, {
+                opacity: 0,
+                y: 24,
+                duration: 0.5,
+                stagger: 0.06,
+                ease: "power3.out",
+                overwrite: "auto",
+              });
+            });
+          }
+        });
+      });
+
+      var reduceMotion =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      window.addEventListener("load", function () {
+        if (typeof ScrollTrigger !== "undefined") {
+          ScrollTrigger.refresh();
+        }
+      });
+
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+        var dur = reduceMotion ? 0.35 : 0.8;
+        var durHead = reduceMotion ? 0.42 : 0.75;
+        var yIn = reduceMotion ? 14 : 50;
+        var ySm = reduceMotion ? 10 : 24;
+        var yHead = reduceMotion ? 12 : 32;
+        var delayChip = reduceMotion ? 0.03 : 0.08;
+        var delayCard = reduceMotion ? 0.04 : 0.1;
+
+        var headTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        headTl
+          .from(".page-breadcrumb", { opacity: 0, y: yHead, duration: durHead })
+          .from(".page-title", { opacity: 0, y: yHead, duration: durHead * 1.08 }, "-=0.48")
+          .from(".page-sub", { opacity: 0, y: ySm, duration: durHead * 0.95 }, "-=0.52")
+          .from(".page-meta", { opacity: 0, y: ySm, duration: durHead * 0.9 }, "-=0.5")
+          .from(
+            ".page-meta-line",
+            { scaleX: 0, opacity: 0, transformOrigin: "right center", duration: durHead * 0.72 },
+            "-=0.42"
+          );
+
+        gsap.utils.toArray(".gallery-filters-section .gallery-filter").forEach(function (chip, i) {
+          gsap.from(chip, {
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: ".gallery-filters-section",
+              start: "top 90%",
+              toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: ySm,
+            duration: reduceMotion ? 0.28 : 0.72,
+            ease: "power3.out",
+            delay: i * delayChip,
+          });
+        });
+
+        gsap.utils.toArray("#gallery-page-grid .gallery-item").forEach(function (item, i) {
+          gsap.from(item, {
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: item,
+              start: "top 92%",
+              toggleActions: "play none none reverse",
+            },
+            duration: dur,
+            y: yIn,
+            opacity: 0,
+            ease: "power3.out",
+            delay: i * delayCard,
+          });
+        });
+
+        gsap.from(".gallery-cta-aside > div", {
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: ".gallery-cta-aside",
+            start: "top 92%",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: reduceMotion ? 16 : 44,
+          duration: dur,
+          ease: "power3.out",
+        });
+
+        requestAnimationFrame(function () {
+          ScrollTrigger.refresh();
+        });
+      }
+    </script>
+  </body>
+</html>
