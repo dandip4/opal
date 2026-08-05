@@ -1,5 +1,5 @@
 /**
- * Data dummy proyek portofolio — ganti detail nanti sesuai CV asli.
+ * Data  proyek portofolio — ganti detail nanti sesuai CV asli.
  */
 (function () {
   var PORTFOLIO_IMAGES = [
@@ -21,7 +21,7 @@
       status: "ongoing",
       url: "",
       tech: ["Flutter", "Laravel", "MySQL"],
-      summary: "Platform pengurangan food waste — modul donasi, pickup, dan dasbor (dummy, detail menyusul).",
+      summary: "Platform pengurangan food waste — modul donasi, pickup, dan dasbor (, detail menyusul).",
       detail:
         "Proyek pribadi untuk menghubungkan penyedia makanan berlebih dengan penerima. Rencana fitur: autentikasi, listing stok, notifikasi, dan panel admin ringan.",
     },
@@ -34,7 +34,7 @@
       status: "ongoing",
       url: "",
       tech: ["Node.js", "MySQL", "React"],
-      summary: "Sistem inventori terdistribusi antar cabang — stok, transfer, dan rekonsiliasi (dummy).",
+      summary: "Sistem inventori terdistribusi antar cabang — stok, transfer, dan rekonsiliasi ().",
       detail: "Eksperimen arsitektur multi-lokasi dengan sinkronisasi stok dan audit trail. Detail teknis dan diagram alur akan dilengkapi.",
     },
     {
@@ -46,7 +46,7 @@
       status: "ongoing",
       url: "",
       tech: ["Laravel", "PHP", "MySQL"],
-      summary: "Manajemen koleksi buku, peminjaman, dan anggota perpustakaan (dummy).",
+      summary: "Manajemen koleksi buku, peminjaman, dan anggota perpustakaan ().",
       detail: "Modul katalog, sirkulasi peminjaman, denda, dan laporan harian. Cocok sebagai studi kasus CRUD + aturan bisnis.",
     },
     {
@@ -58,7 +58,7 @@
       status: "ongoing",
       url: "",
       tech: ["Laravel", "JavaScript", "MySQL"],
-      summary: "Sistem informasi untuk klien Pathcare — alur klinis dan administrasi (dummy).",
+      summary: "Sistem informasi untuk klien Pathcare — alur klinis dan administrasi ().",
       detail: "Kolaborasi dengan klien untuk kebutuhan operasional kesehatan. Spesifikasi modul dan integrasi akan diperbarui setelah finalisasi scope.",
     },
     {
@@ -235,7 +235,7 @@
       url: "",
       tech: ["HTML", "CSS", "JavaScript"],
       summary: "Landing page kampanye donasi — proyek kursus.",
-      detail: "Fokus pada storytelling, form donasi dummy, dan responsif mobile.",
+      detail: "Fokus pada storytelling, form donasi , dan responsif mobile.",
     },
     {
       id: "ewallet-2024",
@@ -246,7 +246,7 @@
       status: "live",
       url: "",
       tech: ["Flutter", "Dart", "Firebase"],
-      summary: "Aplikasi dompet digital simulasi — transfer dan riwayat (dummy).",
+      summary: "Aplikasi dompet digital simulasi — transfer dan riwayat ().",
       detail: "Latihan UI mobile, state management, dan integrasi backend ringan untuk kursus.",
     },
     {
@@ -761,7 +761,7 @@
     if (metaEl) {
       var meta =
         p.year + " · " + p.client + " · " + statusLabel(p.status);
-      if (!p.richModal) meta += " (data dummy)";
+      if (!p.richModal) meta += " (data )";
       metaEl.textContent = meta;
     }
     if (bodyEl) {
